@@ -13,9 +13,9 @@ From home repairs to moving services, our goal is to make hiring as simple as ta
 - 🔒 Verified worker profiles
 
 ## Tech Stack
-**Frontend:** React.js, React Native, TailwindCSS  
+**Frontend:** React+vite, TailwindCSS  
 **Backend:** Node.js, Express.js, Socket.IO  
 **Database:** MongoDB  
-**Payments:** Razorpay / Stripe  
+**Payments:** billdesk
 **Integrations:** Google Maps API, Firebase Cloud Messaging  
-**Hosting:** Render, Vercel, AWS
+**Hosting:**  AWS
