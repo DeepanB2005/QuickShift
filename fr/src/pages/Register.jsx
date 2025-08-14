@@ -8,11 +8,18 @@ export default function Register() {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    console.log("Submitting:", formData); // Debug log
     try {
       await API.post("/auth/register", formData);
       navigate("/login");
     } catch (err) {
-      alert(err.response?.data?.message || "Registration failed");
+      console.error("Registration error:", err.response?.data); // Log full error
+      const errors = err.response?.data?.errors;
+      if (Array.isArray(errors) && errors.length > 0) {
+        alert(errors.map(e => e.msg || e.message).join("\n"));
+      } else {
+        alert(err.response?.data?.message || "Registration failed");
+      }
     }
   };
 

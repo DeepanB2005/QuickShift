@@ -22,6 +22,9 @@ useEffect(() => {
 
   return (
     <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
+        <div className="bg-pink-300 justify-center items-center w-auto">
+            <h1>workers</h1>
+        </div>
       {workers.map(worker => (
         <div key={worker._id} className="bg-white rounded shadow p-4">
           <h3 className="font-bold">{worker.name}</h3>
