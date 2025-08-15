@@ -6,5 +6,79 @@
   "bookings": "Bookings",
   "skills": "Skills",
   "rate": "Rate",
-  "service": "Service"
+  "service": "Service",
+
+  "worker_nav": {
+    "dashboard": "Dashboard",
+    "available_jobs": "Available Jobs",
+    "my_jobs": "My Jobs",
+    "payments": "Payments",
+    "profile": "Profile",
+    "support": "Support",
+    "logout": "Logout"
+  },
+  "Welcome, Worker!": "Welcome, Worker!",
+  "Here you can manage jobs, view earnings, and update your profile.": "Here you can manage jobs, view earnings, and update your profile.",
+  "Featured Workers": "Featured Workers",
+  "No Skills": "No skills listed",
+  "No workers available at the moment.": "No workers available at the moment.",
+  "Total Earnings": "Total Earnings",
+  "Jobs Completed": "Jobs Completed",
+  "Pending Jobs": "Pending Jobs",
+
+  "available_jobs": {
+    "title": "Available Jobs",
+    "description": "Browse and accept jobs you want to work on.",
+    "location": "Location",
+    "pay": "Pay",
+    "accept": "Accept Job",
+    "no_jobs": "No jobs available at the moment."
+  },
+
+  "my_jobs": {
+    "title": "My Jobs",
+    "status": "Status",
+    "completed": "Completed",
+    "in_progress": "In Progress",
+    "pending": "Pending",
+    "no_jobs": "You have not joined any jobs yet."
+  },
+
+  "payments": {
+    "description": "View your payment history and track your earnings.",
+    "title": "Payments",
+    "date": "Date",
+    "amount": "Amount",
+    "status": "Status",
+    "paid": "Paid",
+    "pending": "Pending",
+    "no_payments": "No payments found."
+  },
+
+  "profile": {
+    "title": "Profile",
+    "name": "Name",
+    "skills": "Skills",
+    "rate": "Rate",
+    "update_profile": "Update Profile",
+    "save_changes": "Save Changes","description": "View and update your personal details and hourly rate.",
+  "hourly_rate": "Hourly Rate",
+  "update": "Update"
+  },
+
+  "support": {
+    "title": "Support Center",
+    "contact_message": "If you need help, please contact our support team.",
+    "your_name": "Your Name",
+    "your_message": "Your Message",
+    "send_message": "Send Message"
+  },
+  "dashboard": {
+    "welcome_message": "Here you can manage jobs, view earnings, and update your profile."
+  },
+  "total_earnings": "Total Earnings",
+  "jobs_completed": "Jobs Completed",
+  "pending_jobs": "Pending Jobs"
+
 }
+

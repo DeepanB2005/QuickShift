@@ -6,5 +6,80 @@
   "bookings": "बुकिंग्स",
   "skills": "कौशल",
   "rate": "दर",
-  "service": "सेवा"
+  "service": "सेवा",
+
+  "worker_nav": {
+    "dashboard": "डैशबोर्ड",
+    "available_jobs": "उपलब्ध नौकरियां",
+    "my_jobs": "मेरी नौकरियां",
+    "payments": "भुगतान",
+    "profile": "प्रोफ़ाइल",
+    "support": "सहायता",
+    "logout": "लॉगआउट"
+  },
+  "Welcome, Worker!": "स्वागत है, कार्यकर्ता!",
+  "Here you can manage jobs, view earnings, and update your profile.": "यहां आप नौकरियों का प्रबंधन, आय देख सकते हैं और अपनी प्रोफ़ाइल अपडेट कर सकते हैं।",
+  "Featured Workers": "विशेष कर्मचारी",
+  "No Skills": "कोई कौशल नहीं",
+  "No workers available at the moment.": "वर्तमान में कोई कर्मचारी उपलब्ध नहीं है।",
+  "Total Earnings": "कुल आय",
+  "Jobs Completed": "पूर्ण नौकरियां",
+  "Pending Jobs": "लंबित नौकरियां",
+
+   "available_jobs": {
+    "title": "उपलब्ध कार्य",
+    "description": "अपने पसंदीदा कार्य चुनें और शामिल हों।",
+    "location": "स्थान",
+    "pay": "भुगतान",
+    "accept": "कार्य स्वीकार करें",
+    "no_jobs": "इस समय कोई कार्य उपलब्ध नहीं है।"
+  },
+
+  "my_jobs": {
+    "title": "मेरे कार्य",
+    "status": "स्थिति",
+    "completed": "पूरा",
+    "in_progress": "प्रगति पर",
+    "pending": "लंबित",
+    "no_jobs": "आपने अभी तक कोई कार्य नहीं लिया है।"
+  },
+
+  "payments": {
+    "description": "अपना भुगतान इतिहास देखें और अपनी कमाई को ट्रैक करें।",
+    "title": "भुगतान",
+    "date": "तारीख",
+    "amount": "राशि",
+    "status": "स्थिति",
+    "paid": "भुगतान किया गया",
+    "pending": "लंबित",
+    "no_payments": "कोई भुगतान उपलब्ध नहीं है।"
+  },
+
+  "profile": {
+    "title": "प्रोफ़ाइल",
+    "name": "नाम",
+    "skills": "कौशल",
+    "rate": "दर",
+    "update_profile": "प्रोफ़ाइल अपडेट करें",
+    "save_changes": "परिवर्तन सहेजें",
+    "description": "अपनी व्यक्तिगत जानकारी और प्रति घंटे की दर देखें और अपडेट करें।",
+  "hourly_rate": "प्रति घंटे की दर",
+  "update": "अपडेट"
+  },
+
+  "support": {
+    "title": "सहायता केंद्र",
+    "contact_message": "यदि आपको सहायता की आवश्यकता है, तो कृपया हमारी सहायता टीम से संपर्क करें।",
+    "your_name": "आपका नाम",
+    "your_message": "आपका संदेश",
+    "send_message": "संदेश भेजें"
+  },
+  
+  "dashboard": {
+    "welcome_message": "यहाँ आप नौकरियों का प्रबंधन, कमाई देख सकते हैं, और अपनी प्रोफ़ाइल अपडेट कर सकते हैं।"
+  },
+  "total_earnings": "कुल कमाई",
+  "jobs_completed": "पूरा किए गए कार्य",
+  "pending_jobs": "लंबित कार्य"
+
 }
