@@ -4,6 +4,10 @@ import { useNavigate } from "react-router-dom";
 import { useI18n } from "../i18n/I18nProvider";
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:3000";
+const SKILL_OPTIONS = [
+  "Cleaning", "Painting", "Plumbing", "Electrician", "Gardening", "Carpentry", "Cooking", "Other"
+];
+const DAYS = ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"];
 
 export default function Auth() {
   const { t } = useI18n();
@@ -11,9 +15,31 @@ export default function Auth() {
   const [mode, setMode] = useState("login"); // "login" | "register"
   const [form, setForm] = useState({
     name: "", email: "", password: "", confirm: "",
-    location: "", role: "user", phone: ""
+    location: "", role: "user", phone: "",
+    age: "", skills: [], customSkill: "", experience: "", wageMin: "", wageMax: "",
+    availability: [], description: ""
   });
   const onChange = (e) => setForm({ ...form, [e.target.name]: e.target.value });
+
+  const handleRole = (role) => setForm(f => ({ ...f, role }));
+
+  const handleSkillChange = (e) => {
+    const { options } = e.target;
+    const selected = [];
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) selected.push(options[i].value);
+    }
+    setForm(f => ({ ...f, skills: selected }));
+  };
+
+  const handleAvailabilityChange = (e) => {
+    const { options } = e.target;
+    const selected = [];
+    for (let i = 0; i < options.length; i++) {
+      if (options[i].selected) selected.push(options[i].value);
+    }
+    setForm(f => ({ ...f, availability: selected }));
+  };
 
   // Google Identity Services
   useEffect(() => {
@@ -49,9 +75,20 @@ export default function Auth() {
     try {
       if (mode === "register") {
         if (form.password !== form.confirm) return alert(t("register.errors.passwords_dont_match"));
+        let skills = form.skills;
+        if (skills.includes("Other") && form.customSkill) {
+          skills = skills.filter(s => s !== "Other").concat(form.customSkill);
+        }
         const payload = {
           name: form.name, email: form.email, password: form.password,
-          location: form.location, role: form.role, phone: form.phone
+          location: form.location, role: form.role, phone: form.phone,
+          age: form.age,
+          skills: form.role === "worker" ? skills : [],
+          experience: form.role === "worker" ? form.experience : undefined,
+          wageMin: form.role === "worker" ? form.wageMin : undefined,
+          wageMax: form.role === "worker" ? form.wageMax : undefined,
+          availability: form.role === "worker" ? form.availability : [],
+          description: form.role === "worker" ? form.description : ""
         };
         const { data } = await axios.post(`${API}/api/auth/register`, payload);
         localStorage.setItem("token", data.token);
@@ -87,16 +124,67 @@ export default function Auth() {
           <>
             <input name="name" value={form.name} onChange={onChange} placeholder={t("register.name_placeholder")}
               className="w-full border rounded px-3 py-2" required />
+            <input name="age" type="number" min="16" max="100" value={form.age} onChange={onChange} placeholder="Age"
+              className="w-full border rounded px-3 py-2" required />
+
+            <div className="flex gap-2 mb-2">
+              <button type="button"
+                className={`flex-1 px-3 py-2 rounded border ${form.role === "user" ? "bg-indigo-600 text-white" : "bg-gray-100"}`}
+                onClick={() => handleRole("user")}>
+                Customer
+              </button>
+              <button type="button"
+                className={`flex-1 px-3 py-2 rounded border ${form.role === "worker" ? "bg-indigo-600 text-white" : "bg-gray-100"}`}
+                onClick={() => handleRole("worker")}>
+                Worker
+              </button>
+            </div>
+
             <div className="grid grid-cols-2 gap-2">
-              <select name="role" value={form.role} onChange={onChange} className="border rounded px-3 py-2">
-                <option value="user">{t("common.customer")}</option>
-                <option value="worker">{t("common.worker")}</option>
-              </select>
               <input name="location" value={form.location} onChange={onChange} placeholder={t("register.city_placeholder")}
                 className="border rounded px-3 py-2" />
+              <input name="phone" value={form.phone} onChange={onChange} placeholder={t("register.phone_placeholder")}
+                className="border rounded px-3 py-2" />
             </div>
-            <input name="phone" value={form.phone} onChange={onChange} placeholder={t("register.phone_placeholder")}
-              className="w-full border rounded px-3 py-2" />
+
+            {form.role === "worker" && (
+              <div className="space-y-2 bg-gray-50 p-3 rounded border">
+                <label className="block font-medium mb-1">Skills</label>
+                <select multiple name="skills" value={form.skills} onChange={handleSkillChange}
+                  className="w-full border rounded px-3 py-2 h-24">
+                  {SKILL_OPTIONS.map(opt => (
+                    <option key={opt} value={opt}>{opt}</option>
+                  ))}
+                </select>
+                {form.skills.includes("Other") && (
+                  <input name="customSkill" value={form.customSkill} onChange={onChange}
+                    placeholder="Enter custom skill" className="w-full border rounded px-3 py-2 mt-1" />
+                )}
+
+                <div className="grid grid-cols-2 gap-2">
+                  <input name="experience" type="number" min="0" max="80" value={form.experience}
+                    onChange={onChange} placeholder="Experience (years)" className="border rounded px-3 py-2" />
+                  <div className="flex gap-1">
+                    <input name="wageMin" type="number" min="0" value={form.wageMin}
+                      onChange={onChange} placeholder="Wage from" className="border rounded px-3 py-2 w-1/2" />
+                    <input name="wageMax" type="number" min="0" value={form.wageMax}
+                      onChange={onChange} placeholder="to" className="border rounded px-3 py-2 w-1/2" />
+                  </div>
+                </div>
+
+                <label className="block font-medium mt-2 mb-1">Availability</label>
+                <select multiple name="availability" value={form.availability} onChange={handleAvailabilityChange}
+                  className="w-full border rounded px-3 py-2 h-24">
+                  {DAYS.map(day => (
+                    <option key={day} value={day}>{day}</option>
+                  ))}
+                </select>
+
+                <textarea name="description" value={form.description} onChange={onChange}
+                  placeholder="Describe your experience, specialties, etc."
+                  className="w-full border rounded px-3 py-2 mt-2" rows={3} />
+              </div>
+            )}
           </>
         )}
         <input type="email" name="email" value={form.email} onChange={onChange} placeholder={t("login.email_placeholder")}
