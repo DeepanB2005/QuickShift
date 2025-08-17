@@ -3,6 +3,11 @@ const mongoose = require('mongoose');
 const bcrypt = require('bcryptjs');
 
 const userSchema = new mongoose.Schema({
+  googleId: {
+    type: String,
+    unique: true,
+    sparse: true // Allows null values while maintaining uniqueness for non-null values
+  },
   name: {
     type: String,
     required: true,
@@ -16,45 +21,5 @@ const userSchema = new mongoose.Schema({
   },
   password: {
     type: String,
-    required: true,
-    minlength: 6
-  },
-  phone: {
-    type: String,
-    required: true
-  },
-  address: {
-    street: String,
-    city: String,
-    state: String,
-    zipCode: String,
-    coordinates: {
-      lat: Number,
-      lng: Number
-    }
-  },
-  role: {
-    type: String,
-    enum: ['customer', 'worker'],
-    default: 'customer'
-  },
-  isVerified: {
-    type: Boolean,
-    default: false
-  },
-  fcmToken: String
-}, {
-  timestamps: true
-});
-
-userSchema.pre('save', async function(next) {
-  if (!this.isModified('password')) return next();
-  this.password = await bcrypt.hash(this.password, 12);
-  next();
-});
-
-userSchema.methods.comparePassword = async function(password) {
-  return await bcrypt.compare(password, this.password);
-};
-
-module.exports = mongoose.model('User', userSchema);
+    required: function() {
+      return !this.googleId; // Password required only if not Google OAuth user

@@ -14,6 +14,16 @@ const bookingSchema = new mongoose.Schema({
   },
   service: {
     type: String,
+    required: true,
+    enum: [
+      'plumbing', 'electrical', 'carpentry', 'cleaning', 
+      'moving', 'painting', 'gardening', 'ac_repair', 
+      'tv_installation', 'appliance_repair', 'handyman',
+      'pest_control', 'deep_cleaning', 'home_maintenance'
+    ]
+  },
+  title: {
+    type: String,
     required: true
   },
   description: {
@@ -24,7 +34,17 @@ const bookingSchema = new mongoose.Schema({
     type: Date,
     required: true
   },
-  duration: {
+  scheduledTime: {
+    start: {
+      type: String,
+      required: true
+    },
+    end: {
+      type: String,
+      required: true
+    }
+  },
+  estimatedDuration: {
     type: Number, // in hours
     required: true
   },
@@ -33,6 +53,7 @@ const bookingSchema = new mongoose.Schema({
     city: String,
     state: String,
     zipCode: String,
+    landmark: String,
     coordinates: {
       lat: Number,
       lng: Number
@@ -40,26 +61,90 @@ const bookingSchema = new mongoose.Schema({
   },
   status: {
     type: String,
-    enum: ['pending', 'accepted', 'in-progress', 'completed', 'cancelled'],
+    enum: ['pending', 'accepted', 'in-progress', 'completed', 'cancelled', 'rejected'],
     default: 'pending'
   },
-  amount: {
-    type: Number,
-    required: true
+  priority: {
+    type: String,
+    enum: ['low', 'medium', 'high', 'emergency'],
+    default: 'medium'
+  },
+  pricing: {
+    hourlyRate: Number,
+    estimatedCost: Number,
+    actualCost: Number,
+    materials: [{
+      name: String,
+      cost: Number,
+      quantity: Number
+    }],
+    laborCost: Number,
+    totalCost: Number
   },
   paymentStatus: {
     type: String,
-    enum: ['pending', 'paid', 'failed', 'refunded'],
+    enum: ['pending', 'advance_paid', 'paid', 'failed', 'refunded'],
     default: 'pending'
   },
-  rating: {
-    type: Number,
-    min: 1,
-    max: 5
+  paymentDetails: {
+    method: String,
+    transactionId: String,
+    advanceAmount: Number,
+    remainingAmount: Number
   },
-  review: String
+  images: {
+    before: [String],
+    after: [String],
+    issues: [String]
+  },
+  timeline: [{
+    status: String,
+    timestamp: Date,
+    note: String,
+    updatedBy: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    }
+  }],
+  rating: {
+    customer: {
+      rating: Number,
+      review: String,
+      date: Date
+    },
+    worker: {
+      rating: Number,
+      review: String,
+      date: Date
+    }
+  },
+  communication: [{
+    sender: {
+      type: mongoose.Schema.Types.ObjectId,
+      ref: 'User'
+    },
+    message: String,
+    timestamp: Date,
+    type: {
+      type: String,
+      enum: ['text', 'image', 'location'],
+      default: 'text'
+    }
+  }],
+  emergencyService: {
+    type: Boolean,
+    default: false
+  },
+  cancellationReason: String,
+  refundAmount: Number
 }, {
   timestamps: true
 });
+
+// Indexes
+bookingSchema.index({ customer: 1, createdAt: -1 });
+bookingSchema.index({ worker: 1, createdAt: -1 });
+bookingSchema.index({ service: 1, status: 1 });
+bookingSchema.index({ scheduledDate: 1, status: 1 });
 
 module.exports = mongoose.model('Booking', bookingSchema);

@@ -1,5 +1,142 @@
 {
   "welcome": "Welcome to QuickShift 🚀",
+  "home": {
+    "subtitle": "Connect with skilled professionals for all your home service needs",
+    "get_started": "Get Started",
+    "go_to_dashboard": "Go to Dashboard",
+    "welcome_back": "Welcome back, {{name}}!",
+    "popular_services": "Popular Services",
+    "services_subtitle": "Choose from our wide range of professional services",
+    "view_all_services": "View All Services",
+    "why_choose_us": "Why Choose QuickShift?",
+    "features": {
+      "verified": "Verified Professionals",
+      "verified_desc": "All our service providers are background-verified and skilled",
+      "quick": "Quick Response",
+      "quick_desc": "Get connected with professionals within minutes",
+      "secure": "Secure & Reliable",
+      "secure_desc": "Safe payments and guaranteed service quality"
+    },
+    "worker_cta": {
+      "title": "Join as a Service Provider",
+      "subtitle": "Start earning by providing your professional services",
+      "button": "Become a Provider"
+    },
+    "footer": {
+      "rights": "All rights reserved"
+    }
+  },
+  "login": {
+    "title": "Sign in to your account",
+    "subtitle": "Enter your details to access your account",
+    "sign_up_link": "Create new account",
+    "email": "Email Address",
+    "email_placeholder": "Enter your email",
+    "password": "Password",
+    "password_placeholder": "Enter your password",
+    "remember_me": "Remember me",
+    "forgot_password": "Forgot password?",
+    "sign_in_button": "Sign In",
+    "signing_in": "Signing in...",
+    "or_continue_with": "Or continue with",
+    "phone": "Phone",
+    "guest": "Guest",
+    "quick_access": "Quick Access",
+    "join_as_customer": "Join as Customer",
+    "join_as_worker": "Join as Worker",
+    "terms_text": "By signing in, you agree to our",
+    "terms_link": "Terms of Service",
+    "and": "and",
+    "privacy_link": "Privacy Policy",
+    "error": "Login failed. Please try again.",
+    "google_signin": "Continue with Google"
+  },
+  "register": {
+    "title": "Create your account",
+    "subtitle": "Join QuickShift to get started",
+    "sign_in_link": "Already have an account?",
+    "role": "I want to",
+    "customer": "Book Services",
+    "customer_desc": "Find & hire professionals",
+    "worker": "Provide Services",
+    "worker_desc": "Earn by offering your skills",
+    "name": "Full Name",
+    "name_placeholder": "Enter your full name",
+    "email": "Email Address",
+    "email_placeholder": "Enter your email",
+    "phone": "Phone Number",
+    "phone_placeholder": "+91 98765 43210",
+    "city": "City",
+    "city_placeholder": "Your city",
+    "state": "State",
+    "state_placeholder": "Your state",
+    "password": "Password",
+    "password_placeholder": "Create a password",
+    "confirm_password": "Confirm Password",
+    "confirm_password_placeholder": "Confirm your password",
+    "terms_agreement": "I agree to the",
+    "terms_link": "Terms of Service",
+    "and": "and",
+    "privacy_link": "Privacy Policy",
+    "create_account_button": "Create Account",
+    "creating_account": "Creating account...",
+    "footer_text": "By creating an account, you agree to our terms and conditions.",
+    "error": "Registration failed. Please try again.",
+    "errors": {
+      "name_required": "Name is required",
+      "name_min_length": "Name must be at least 2 characters",
+      "email_required": "Email is required",
+      "email_invalid": "Please enter a valid email",
+      "password_required": "Password is required",
+      "password_min_length": "Password must be at least 6 characters",
+      "passwords_dont_match": "Passwords don't match",
+      "phone_required": "Phone number is required",
+      "phone_invalid": "Please enter a valid phone number"
+    },
+    "google_signup": "Continue with Google"
+  },
+  "dashboard": {
+    "welcome": "Welcome back, {{name}}",
+    "subtitle": "Manage your bookings and discover new services",
+    "book_service": "Book a Service",
+    "stats": {
+      "total_bookings": "Total Bookings",
+      "active_bookings": "Active Bookings",
+      "completed_bookings": "Completed",
+      "total_spent": "Total Spent"
+    },
+    "quick_actions": "Quick Actions",
+    "browse_all": "Browse All",
+    "recent_bookings": "Recent Bookings",
+    "view_all": "View All",
+    "no_bookings": "No bookings yet",
+    "no_bookings_desc": "Book your first service to get started",
+    "book_first_service": "Book Your First Service"
+  },
+  "services": {
+    "plumbing": "Plumbing",
+    "electrical": "Electrical",
+    "carpentry": "Carpentry",
+    "cleaning": "House Cleaning",
+    "moving": "Moving & Packing",
+    "painting": "Painting",
+    "gardening": "Gardening",
+    "ac_repair": "AC Repair",
+    "tv_installation": "TV Installation",
+    "appliance_repair": "Appliance Repair",
+    "handyman": "Handyman",
+    "pest_control": "Pest Control",
+    "deep_cleaning": "Deep Cleaning",
+    "home_maintenance": "Home Maintenance"
+  },
+  "booking_status": {
+    "pending": "Pending",
+    "accepted": "Accepted",
+    "in-progress": "In Progress",
+    "completed": "Completed",
+    "cancelled": "Cancelled",
+    "rejected": "Rejected"
+  },
   "login": "Login",
   "register": "Register",
   "workers": "Workers",
@@ -7,7 +144,6 @@
   "skills": "Skills",
   "rate": "Rate",
   "service": "Service",
-
   "worker_nav": {
     "dashboard": "Dashboard",
     "available_jobs": "Available Jobs",
@@ -25,7 +161,6 @@
   "Total Earnings": "Total Earnings",
   "Jobs Completed": "Jobs Completed",
   "Pending Jobs": "Pending Jobs",
-
   "available_jobs": {
     "title": "Available Jobs",
     "description": "Browse and accept jobs you want to work on.",
@@ -34,7 +169,6 @@
     "accept": "Accept Job",
     "no_jobs": "No jobs available at the moment."
   },
-
   "my_jobs": {
     "title": "My Jobs",
     "status": "Status",
@@ -43,7 +177,6 @@
     "pending": "Pending",
     "no_jobs": "You have not joined any jobs yet."
   },
-
   "payments": {
     "description": "View your payment history and track your earnings.",
     "title": "Payments",
@@ -54,18 +187,17 @@
     "pending": "Pending",
     "no_payments": "No payments found."
   },
-
   "profile": {
     "title": "Profile",
     "name": "Name",
     "skills": "Skills",
     "rate": "Rate",
     "update_profile": "Update Profile",
-    "save_changes": "Save Changes","description": "View and update your personal details and hourly rate.",
-  "hourly_rate": "Hourly Rate",
-  "update": "Update"
+    "save_changes": "Save Changes",
+    "description": "View and update your personal details and hourly rate.",
+    "hourly_rate": "Hourly Rate",
+    "update": "Update"
   },
-
   "support": {
     "title": "Support Center",
     "contact_message": "If you need help, please contact our support team.",
@@ -73,12 +205,7 @@
     "your_message": "Your Message",
     "send_message": "Send Message"
   },
-  "dashboard": {
-    "welcome_message": "Here you can manage jobs, view earnings, and update your profile."
-  },
   "total_earnings": "Total Earnings",
   "jobs_completed": "Jobs Completed",
   "pending_jobs": "Pending Jobs"
-
-}
-
+} 
