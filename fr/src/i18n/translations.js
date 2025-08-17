@@ -339,6 +339,17 @@ export const translations = {
       requirements: "Requirements",
       submit: "Post Job",
       success: "Job posted successfully!"
+    },
+    myPosts: {
+      title: "My Posts",
+      noPosts: "No jobs posted yet.",
+      edit: "Edit",
+      delete: "Delete",
+      save: "Save",
+      cancel: "Cancel",
+      updated: "Job updated.",
+      deleted: "Job deleted.",
+      confirmDelete: "Delete this job?"
     }
   },
 
@@ -666,18 +677,29 @@ export const translations = {
       cancel: "रद्द करें"
     },
     addPost: {
-  title: "नौकरी पोस्ट करें",
-  jobName: "नौकरी का नाम",
-  description: "विवरण",
-  location: "स्थान",
-  duration: "अवधि",
-  date: "तारीख",
-  wageMin: "न्यूनतम वेतन",
-  wageMax: "अधिकतम वेतन",
-  requirements: "आवश्यकताएँ",
-  submit: "नौकरी पोस्ट करें",
-  success: "नौकरी सफलतापूर्वक पोस्ट की गई!"
-}
+      title: "नौकरी पोस्ट करें",
+      jobName: "नौकरी का नाम",
+      description: "विवरण",
+      location: "स्थान",
+      duration: "अवधि",
+      date: "तारीख",
+      wageMin: "वेतन न्यूनतम",
+      wageMax: "वेतन अधिकतम",
+      requirements: "आवश्यकताएँ",
+      submit: "नौकरी पोस्ट करें",
+      success: "नौकरी सफलतापूर्वक पोस्ट की गई!"
+    },
+    myPosts: {
+      title: "मेरी पोस्ट्स",
+      noPosts: "कोई जॉब पोस्ट नहीं की गई है।",
+      edit: "संपादित करें",
+      delete: "हटाएं",
+      save: "सहेजें",
+      cancel: "रद्द करें",
+      updated: "जॉब अपडेट की गई।",
+      deleted: "जॉब हटा दी गई।",
+      confirmDelete: "क्या आप इस जॉब को हटाना चाहते हैं?"
+    }
   },
 
   // Tamil Translations
@@ -1001,17 +1023,28 @@ export const translations = {
       cancel: "ரத்து செய்யவும்"
     },
     addPost: {
-  title: "வேலை பதிவிடவும்",
-  jobName: "வேலை பெயர்",
-  description: "விளக்கம்",
-  location: "இடம்",
-  duration: "கால அளவு",
-  date: "தேதி",
-  wageMin: "குறைந்தபட்ச சம்பளம்",
-  wageMax: "அதிகபட்ச சம்பளம்",
-  requirements: "தேவைகள்",
-  submit: "வேலை பதிவிடவும்",
-  success: "வேலை வெற்றிகரமாக பதிவிடப்பட்டது!"
-}
+      title: "வேலை பதிவிடவும்",
+      jobName: "வேலை பெயர்",
+      description: "விளக்கம்",
+      location: "இடம்",
+      duration: "கால அளவு",
+      date: "தேதி",
+      wageMin: "குறைந்தபட்ச சம்பளம்",
+      wageMax: "அதிகபட்ச சம்பளம்",
+      requirements: "தேவைகள்",
+      submit: "வேலை பதிவிடவும்",
+      success: "வேலை வெற்றிகரமாக பதிவிடப்பட்டது!"
+    },
+    myPosts: {
+      title: "எனது பதிவுகள்",
+      noPosts: "வேலை பதிவுகள் இல்லை.",
+      edit: "திருத்தவும்",
+      delete: "நீக்கவும்",
+      save: "சேமிக்கவும்",
+      cancel: "ரத்து செய்யவும்",
+      updated: "வேலை புதுப்பிக்கப்பட்டது.",
+      deleted: "வேலை நீக்கப்பட்டது.",
+      confirmDelete: "இந்த வேலை பதிவை நீக்க விரும்புகிறீர்களா?"
+    }
   }
 };

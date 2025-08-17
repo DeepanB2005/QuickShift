@@ -5,6 +5,7 @@ import rateLimit from "express-rate-limit";
 import dotenv from "dotenv";
 import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/auth.routes.js";
+import jobRoutes from "./routes/job.routes.js";
 
 dotenv.config();
 const app = express();
@@ -21,6 +22,7 @@ app.use(limiter);
 
 app.get("/", (_req, res) => res.send("QuickShift API is running"));
 app.use("/api/auth", authRoutes);
+app.use("/api/jobs", jobRoutes);
 
 // global error handler
 app.use((err, _req, res, _next) => {
