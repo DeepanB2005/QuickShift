@@ -1,27 +1,15 @@
-// src/middleware/auth.js
-const jwt = require('jsonwebtoken');
-const User = require('../models/User');
+import jwt from "jsonwebtoken";
 
-const auth = async (req, res, next) => {
+export const auth = (req, _res, next) => {
+  const hdr = req.headers.authorization || "";
+  const token = hdr.startsWith("Bearer ") ? hdr.slice(7) : null;
+  if (!token) return next({ status: 401, message: "No token" });
+
   try {
-    const token = req.header('Authorization')?.replace('Bearer ', '');
-    
-    if (!token) {
-      return res.status(401).json({ message: 'No token provided' });
-    }
-
-    const decoded = jwt.verify(token, process.env.JWT_SECRET || 'fallback-secret');
-    const user = await User.findById(decoded.userId);
-    
-    if (!user) {
-      return res.status(401).json({ message: 'Invalid token' });
-    }
-
-    req.user = user;
+    const payload = jwt.verify(token, process.env.JWT_SECRET);
+    req.user = payload; // { id, email, role }
     next();
-  } catch (error) {
-    res.status(401).json({ message: 'Invalid token' });
+  } catch {
+    next({ status: 401, message: "Invalid token" });
   }
 };
-
-module.exports = auth;

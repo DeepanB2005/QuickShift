@@ -1,3 +1,4 @@
+// src/i18n/translations.js
 
 export const translations = {
   en: {
