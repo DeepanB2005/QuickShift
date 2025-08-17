@@ -3,7 +3,7 @@ import axios from "axios";
 import { useNavigate } from "react-router-dom";
 import { useI18n } from "../i18n/I18nProvider";
 
-const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
+const API = import.meta.env.VITE_API_URL || "http://localhost:3000";
 
 export default function Auth() {
   const { t } = useI18n();
@@ -63,7 +63,11 @@ export default function Auth() {
       }
       navigate("/dashboard");
     } catch (err) {
-      alert(t("login.error"));
+      if (err.response?.status === 409) {
+        alert(t("register.errors.email_exists") || "Email already registered");
+      } else {
+        alert(t("login.error"));
+      }
     }
   };
 

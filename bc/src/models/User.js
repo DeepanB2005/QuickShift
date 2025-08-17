@@ -7,7 +7,7 @@ const UserSchema = new mongoose.Schema(
     password: { type: String }, // optional for Google users
     location: { type: String, default: "" },
     role: { type: String, enum: ["user", "worker"], default: "user" },
-    phone: { type: String, trim: true },
+    phone: { type: String, trim: true, unique: true },
     provider: { type: String, enum: ["local", "google"], default: "local" },
     googleId: { type: String }
   },
