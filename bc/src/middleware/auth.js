@@ -7,7 +7,7 @@ export const auth = (req, _res, next) => {
 
   try {
     const payload = jwt.verify(token, process.env.JWT_SECRET);
-    req.user = payload; // { id, email, role }
+    req.user = payload;
     next();
   } catch {
     next({ status: 401, message: "Invalid token" });

@@ -63,7 +63,9 @@ export default function Auth() {
       }
       navigate("/dashboard");
     } catch (err) {
-      if (err.response?.status === 409) {
+      if (err.response?.status === 401) {
+        alert("This account was registered with Google. Please use Google login.");
+      } else if (err.response?.status === 409) {
         alert(t("register.errors.email_exists") || "Email already registered");
       } else {
         alert(t("login.error"));
