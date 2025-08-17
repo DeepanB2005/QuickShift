@@ -130,7 +130,8 @@ export const updateMe = async (req, res, next) => {
       req.user.id,
       updateData,
       { new: true, runValidators: true }
-    ).select("-password");
+    ).select("-password").lean(); // <-- ensure plain object
+
     res.json({ user });
   } catch (err) {
     next(err);

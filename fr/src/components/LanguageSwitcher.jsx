@@ -8,7 +8,12 @@ export default function LanguageSwitcher() {
     localStorage.setItem("lang", e.target.value);
   };
   return (
-    <select value={lang} onChange={change} className="border rounded px-2 py-1">
+    <select
+      value={lang}
+      onChange={change}
+      className="border rounded px-2 py-1 bg-gray-50 text-gray-700"
+      aria-label="Change language"
+    >
       <option value="en">English</option>
       <option value="hi">हिन्दी</option>
       <option value="ta">தமிழ்</option>

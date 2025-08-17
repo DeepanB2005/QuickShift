@@ -288,6 +288,57 @@ export const translations = {
         cancelled: "Cancelled",
         rejected: "Rejected"
       }
+    },
+
+    // Dashboard Sidebar & Sections
+    sidebar: {
+      profile: "Profile",
+      addPost: "Add Post",
+      myPosts: "My Posts",
+      joinRequests: "Join Requests",
+      jobPosts: "Job Posts",
+      myBookings: "My Bookings",
+      requests: "Requests"
+    },
+    sections: {
+      profile: "Profile",
+      addPost: "Add Post",
+      myPosts: "My Posts",
+      joinRequests: "Join Requests",
+      jobPosts: "Job Posts",
+      myBookings: "My Bookings",
+      requests: "Requests"
+    },
+    profile: {
+      name: "Name",
+      email: "Email",
+      role: "Role",
+      age: "Age",
+      location: "Location",
+      phone: "Phone",
+      skills: "Skills",
+      experience: "Experience",
+      wageRange: "Wage Range",
+      wageMin: "Minimum Wage",
+      wageMax: "Maximum Wage",
+      availability: "Availability",
+      description: "Description",
+      edit: "Edit",
+      save: "Save",
+      cancel: "Cancel"
+    },
+    addPost: {
+      title: "Post a Job",
+      jobName: "Job Name",
+      description: "Description",
+      location: "Location",
+      duration: "Duration",
+      date: "Date",
+      wageMin: "Wage Min",
+      wageMax: "Wage Max",
+      requirements: "Requirements",
+      submit: "Post Job",
+      success: "Job posted successfully!"
     }
   },
 
@@ -349,6 +400,7 @@ export const translations = {
       and: "और"
     },
 
+    // Home Page
     home: {
       welcome: "स्वागत है",
       login: "लॉगिन",
@@ -418,6 +470,7 @@ export const translations = {
       }
     },
 
+    // Login Page
     login: {
       welcome_back: "वापस स्वागत है",
       title: "अपने खाते में साइन इन करें",
@@ -444,6 +497,7 @@ export const translations = {
       oauth_failed: "OAuth लॉगिन असफल। कृपया पुनः प्रयास करें।"
     },
 
+    // Register Page
     register: {
       title: "अपना खाता बनाएं",
       subtitle: "हजारों खुश ग्राहकों और कामगारों में शामिल हों",
@@ -487,6 +541,7 @@ export const translations = {
       }
     },
 
+    // Dashboard
     dashboard: {
       welcome: "वापस स्वागत है",
       overview: "सारांश",
@@ -521,7 +576,7 @@ export const translations = {
         },
         pending_requests: "लंबित अनुरोध",
         active_jobs: "सक्रिय कार्य",
-        completed_jobs: "पूर्ण कार्य",
+        completed_jobs: "मुद्रित कार्य",
         total_earnings: "कुल कमाई",
         recent_bookings: "हाल की बुकिंग",
         all_bookings: "सभी बुकिंग",
@@ -571,7 +626,58 @@ export const translations = {
         cancelled: "रद्द",
         rejected: "अस्वीकृत"
       }
-    }
+    },
+
+    // Dashboard Sidebar & Sections
+    sidebar: {
+      profile: "प्रोफ़ाइल",
+      addPost: "पोस्ट जोड़ें",
+      myPosts: "मेरी पोस्ट्स",
+      joinRequests: "जॉइन अनुरोध",
+      jobPosts: "नौकरी पोस्ट्स",
+      myBookings: "मेरी बुकिंग",
+      requests: "अनुरोध"
+    },
+    sections: {
+      profile: "प्रोफ़ाइल",
+      addPost: "पोस्ट जोड़ें",
+      myPosts: "मेरी पोस्ट्स",
+      joinRequests: "जॉइन अनुरोध",
+      jobPosts: "नौकरी पोस्ट्स",
+      myBookings: "मेरी बुकिंग",
+      requests: "अनुरोध"
+    },
+    profile: {
+      name: "नाम",
+      email: "ईमेल",
+      role: "भूमिका",
+      age: "आयु",
+      location: "स्थान",
+      phone: "फोन",
+      skills: "कौशल",
+      experience: "अनुभव",
+      wageRange: "वेतन सीमा",
+      wageMin: "न्यूनतम वेतन",
+      wageMax: "अधिकतम वेतन",
+      availability: "उपलब्धता",
+      description: "विवरण",
+      edit: "संपादित करें",
+      save: "सहेजें",
+      cancel: "रद्द करें"
+    },
+    addPost: {
+  title: "नौकरी पोस्ट करें",
+  jobName: "नौकरी का नाम",
+  description: "विवरण",
+  location: "स्थान",
+  duration: "अवधि",
+  date: "तारीख",
+  wageMin: "न्यूनतम वेतन",
+  wageMax: "अधिकतम वेतन",
+  requirements: "आवश्यकताएँ",
+  submit: "नौकरी पोस्ट करें",
+  success: "नौकरी सफलतापूर्वक पोस्ट की गई!"
+}
   },
 
   // Tamil Translations
@@ -632,6 +738,7 @@ export const translations = {
       and: "மற்றும்"
     },
 
+    // Home Page
     home: {
       welcome: "வரவேற்கிறோம்",
       login: "உள்நுழைவு",
@@ -658,7 +765,7 @@ export const translations = {
         subtitle: "3 எளிய படிகளில் உங்கள் வேலையை முடிக்கவும்",
         step1: {
           title: "தொழிலாளர்களை தேடவும்",
-          description: "உங்கள் பகுதியில் திறமையான தொழிலாளர்களை உலாவவும் மற்றும் தேடவும்"
+          description: "உங்கள் பகுதியில் திறமியான தொழிலாளர்களை உலாவவும் மற்றும் தேடவும்"
         },
         step2: {
           title: "சேவையை புக் செய்யவும்",
@@ -828,7 +935,7 @@ export const translations = {
       available_workers: "கிடைக்கும் தொழிலாளர்கள்",
       no_workers_found: "தொழிலாளர்கள் யாரும் கிடைக்கவில்லை",
       try_different_filters: "உங்கள் தேடல் வடிகட்டிகளை சரிசெய்ய முயற்சிக்கவும்",
-      responds_in: "பதிலளிக்கும் நेरम்",
+      responds_in: "பதிலளிக்கும் நெருப்பு",
       plumbing: "பிளம்பிங்",
       electrical: "மின் வேலை",
       carpentry: "தச்சு வேலை",
@@ -854,6 +961,57 @@ export const translations = {
         cancelled: "ரத்து செய்யப்பட்டது",
         rejected: "நிராகரிக்கப்பட்டது"
       }
-    }
+    },
+
+    // Dashboard Sidebar & Sections
+    sidebar: {
+      profile: "சுயவிவரம்",
+      addPost: "பதிவைச் சேர்க்கவும்",
+      myPosts: "எனது பதிவுகள்",
+      joinRequests: "சேர்க்கும் கோரிக்கைகள்",
+      jobPosts: "வேலை பதிவுகள்",
+      myBookings: "எனது புக்கிங்குகள்",
+      requests: "கோரிக்கைகள்"
+    },
+    sections: {
+      profile: "சுயவிவரம்",
+      addPost: "பதிவைச் சேர்க்கவும்",
+      myPosts: "எனது பதிவுகள்",
+      joinRequests: "சேர்க்கும் கோரிக்கைகள்",
+      jobPosts: "வேலை பதிவுகள்",
+      myBookings: "எனது புக்கிங்குகள்",
+      requests: "கோரிக்கைகள்"
+    },
+    profile: {
+      name: "பெயர்",
+      email: "மின்னஞ்சல்",
+      role: "பங்கு",
+      age: "வயது",
+      location: "இடம்",
+      phone: "தொலைபேசி",
+      skills: "திறன்கள்",
+      experience: "அனுபவம்",
+      wageRange: "சம்பள வரம்பு",
+      wageMin: "குறைந்தபட்ச சம்பளம்",
+      wageMax: "அதிகபட்ச சம்பளம்",
+      availability: "இருப்பு",
+      description: "விளக்கம்",
+      edit: "திருத்தவும்",
+      save: "சேமிக்கவும்",
+      cancel: "ரத்து செய்யவும்"
+    },
+    addPost: {
+  title: "வேலை பதிவிடவும்",
+  jobName: "வேலை பெயர்",
+  description: "விளக்கம்",
+  location: "இடம்",
+  duration: "கால அளவு",
+  date: "தேதி",
+  wageMin: "குறைந்தபட்ச சம்பளம்",
+  wageMax: "அதிகபட்ச சம்பளம்",
+  requirements: "தேவைகள்",
+  submit: "வேலை பதிவிடவும்",
+  success: "வேலை வெற்றிகரமாக பதிவிடப்பட்டது!"
+}
   }
 };
