@@ -1,9 +1,57 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
+import axios from "axios";
+import { useI18n } from "../../../i18n/I18nProvider";
+
+const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
+
 export default function RequestsSection() {
+  const { t } = useI18n();
+  const [requests, setRequests] = useState([]);
+  const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+    axios
+      .get(`${API}/api/join-requests/worker`, {
+        headers: { Authorization: `Bearer ${token}` },
+      })
+      .then(({ data }) => {
+        setRequests(data.requests);
+        setLoading(false);
+      })
+      .catch(() => setLoading(false));
+  }, []);
+
+  if (loading)
+    return <div className="text-center mt-10">{t("common.loading")}</div>;
+
   return (
     <div className="bg-white rounded-xl shadow-lg p-8 max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold mb-4">Requests</h2>
-      <div className="text-gray-500">[Requests placeholder]</div>
+      <h2 className="text-2xl font-bold mb-4">
+        {t("requests.title") || "My Requests"}
+      </h2>
+      {requests.length === 0 ? (
+        <div className="text-gray-500">
+          {t("requests.noRequests") || "No requests sent yet."}
+        </div>
+      ) : (
+        <div className="space-y-4">
+          {requests.map((req) => (
+            <div
+              key={req._id}
+              className="border rounded-lg p-4 bg-gray-50"
+            >
+              <div className="font-bold">{req.job?.jobName}</div>
+              <div className="text-sm text-gray-600">{req.job?.location}</div>
+              <div className="text-gray-700">{req.message}</div>
+              <div className="text-sm text-green-500">
+                {t("requests.status") || "Status"}:{" "}
+                {t(`joinRequests.${req.status}`) || req.status}
+              </div>
+            </div>
+          ))}
+        </div>
+      )}
     </div>
   );
 }

@@ -69,9 +69,11 @@ export const translations = {
       explore_services: "Explore Services",
       nav: {
         services: "Services",
-        find_workers: "Find Workers",
+        features: "Features",
         about: "About",
-        contact: "Contact"
+        get_started: "Get Started",
+        login: "Login",
+        dashboard: "Dashboard"
       },
       hero: {
         title: "QuickShift: Connect with Blue Collar Workers",
@@ -197,6 +199,7 @@ export const translations = {
       my_bookings: "My Bookings",
       find_workers: "Find Workers",
       profile_settings: "Profile Settings",
+      homeBtn: "Home",
       stats: {
         active_bookings: "Active Bookings",
         completed_bookings: "Completed Jobs",
@@ -361,6 +364,22 @@ export const translations = {
       rejected: "Rejected",
       accept: "Accept",
       reject: "Reject"
+    },
+    myBookings: {
+      title: "My Bookings",
+      noBookings: "No bookings yet.",
+      requestMessage: "Your Message",
+      status: "Status"
+    },
+    requests: {
+      title: "My Requests",
+      noRequests: "No requests sent yet.",
+      status: "Status"
+    },
+    auth: {
+      homeBtn: "Home",
+      switchToRegister: "Don't have an account? Register",
+      switchToLogin: "Already have an account? Login"
     }
   },
 
@@ -436,9 +455,11 @@ export const translations = {
       explore_services: "सेवाएं देखें",
       nav: {
         services: "सेवाएं",
-        find_workers: "कामगार खोजें",
+        features: "विशेषताएँ",
         about: "हमारे बारे में",
-        contact: "संपर्क"
+        get_started: "शुरू करें",
+        login: "लॉगिन",
+        dashboard: "डैशबोर्ड"
       },
       hero: {
         title: "QuickShift: ब्लू कॉलर वर्कर्स से जुड़ें",
@@ -602,7 +623,7 @@ export const translations = {
         active_jobs: "सक्रिय कार्य",
         completed_jobs: "मुद्रित कार्य",
         total_earnings: "कुल कमाई",
-        recent_bookings: "हाल की बुकिंग",
+        recent_bookings: "सामान्य बुकिंग",
         all_bookings: "सभी बुकिंग",
         no_bookings: "अभी तक कोई बुकिंग नहीं",
         start_job: "कार्य शुरू करें",
@@ -727,6 +748,22 @@ export const translations = {
       rejected: "अस्वीकृत",
       accept: "स्वीकृत करें",
       reject: "निराकरण करें"
+    },
+    myBookings: {
+      title: "मेरी बुकिंग",
+      noBookings: "अभी तक कोई बुकिंग नहीं",
+      requestMessage: "आपका संदेश",
+      status: "स्थिति"
+    },
+    requests: {
+      title: "My Requests",
+      noRequests: "No requests sent yet.",
+      status: "Status"
+    },
+    auth: {
+      homeBtn: "होम",
+      switchToRegister: "खाता नहीं है? रजिस्टर करें",
+      switchToLogin: "पहले से खाता है? लॉगिन करें"
     }
   },
 
@@ -798,9 +835,11 @@ export const translations = {
       explore_services: "சேவைகளை ஆராயவும்",
       nav: {
         services: "சேவைகள்",
-        find_workers: "தொழிலாளர்களை தேடவும்",
+        features: "சிறப்பம்சங்கள்",
         about: "எங்களைப் பற்றி",
-        contact: "தொடர்பு"
+        get_started: "தொடங்கவும்",
+        login: "உள்நுழைவு",
+        dashboard: "டாஷ்போர்டு"
       },
       hero: {
         title: "QuickShift: ப்ளூ காலர் தொழிலாளர்களுடன் இணைக",
@@ -1090,6 +1129,22 @@ export const translations = {
       rejected: "நிராகரிக்கப்பட்டது",
       accept: "ஏற்கவும்",
       reject: "நிராகரிக்கவும்"
+    },
+    myBookings: {
+      title: "எனது புக்கிங்குகள்",
+      noBookings: "இன்னும் புக்கிங் இல்லை",
+      requestMessage: "உங்கள் செய்தி",
+      status: "நிலை"
+    },
+    requests: {
+      title: "My Requests",
+      noRequests: "No requests sent yet.",
+      status: "Status"
+    },
+    auth: {
+      homeBtn: "முகப்பு",
+      switchToRegister: "கணக்கு இல்லையா? பதிவு செய்யவும்",
+      switchToLogin: "ஏற்கனவே கணக்கு உள்ளதா? உள்நுழையவும்"
     }
   }
 };

@@ -4,6 +4,19 @@ import { useI18n } from "../../../i18n/I18nProvider";
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
+const JOB_OPTIONS = [
+  "Plumber",
+  "Electrician",
+  "Carpenter",
+  "AC Mechanic",
+  "House Cleaning",
+  "Cook",
+  "Gardener",
+  "Driver",
+  "Painter",
+  "Other"
+];
+
 export default function AddPostSection() {
   const { t } = useI18n();
   const [form, setForm] = useState({
@@ -19,25 +32,30 @@ export default function AddPostSection() {
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
 
-  const handleChange = e => {
+  const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
   };
 
-  const handleSubmit = async e => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
     setLoading(true);
     setMsg("");
     try {
       const token = localStorage.getItem("token");
-      await axios.post(`${API}/api/jobs`, {
-        ...form,
-        wageMin: form.wageMin ? Number(form.wageMin) : undefined,
-        wageMax: form.wageMax ? Number(form.wageMax) : undefined,
-        requirements: form.requirements.split(",").map(r => r.trim()).filter(Boolean)
-      }, {
-        headers: { Authorization: `Bearer ${token}` }
-      });
-      setMsg(t("addPost.success") || "Job posted successfully!");
+      await axios.post(
+        `${API}/api/jobs`,
+        {
+          ...form,
+          wageMin: form.wageMin ? Number(form.wageMin) : undefined,
+          wageMax: form.wageMax ? Number(form.wageMax) : undefined,
+          requirements: form.requirements
+            .split(",")
+            .map((r) => r.trim())
+            .filter(Boolean),
+        },
+        { headers: { Authorization: `Bearer ${token}` } }
+      );
+      setMsg(t("addPost.success") || "✅ Job posted successfully!");
       setForm({
         jobName: "",
         description: "",
@@ -46,7 +64,7 @@ export default function AddPostSection() {
         date: "",
         wageMin: "",
         wageMax: "",
-        requirements: ""
+        requirements: "",
       });
     } catch (err) {
       setMsg(err?.response?.data?.message || t("common.error"));
@@ -55,56 +73,157 @@ export default function AddPostSection() {
   };
 
   return (
-    <div className="bg-white rounded-xl shadow-lg p-8 max-w-xl mx-auto">
-      <h2 className="text-2xl font-bold mb-6 text-indigo-700">{t("addPost.title") || "Post a Job"}</h2>
-      <form className="space-y-5" onSubmit={handleSubmit}>
+    <div className="bg-gradient-to-br from-indigo-50 to-purple-100 rounded-2xl shadow-2xl p-10 max-w-2xl mx-auto mt-8">
+      <h2 className="text-3xl font-extrabold mb-6 text-indigo-800 text-center">
+        {t("addPost.title") || "🚀 Post a Job"}
+      </h2>
+      <form className="space-y-6" onSubmit={handleSubmit}>
+        {/* Job Name */}
         <div>
-          <label className="block font-semibold mb-1 text-indigo-600">{t("addPost.jobName") || "Job Name"}</label>
-          <input className="input bg-gray-200 rounded-2xl h-10 w-full" name="jobName" value={form.jobName} onChange={handleChange} required />
-        </div>
-        <div>
-          <label className="block font-semibold mb-1 text-indigo-600">{t("addPost.description") || "Description"}</label>
-          <textarea className="input w-full" name="description" value={form.description} onChange={handleChange} required rows={3} />
-        </div>
-        <div>
-          <label className="block font-semibold mb-1 text-indigo-600">{t("addPost.location") || "Location"}</label>
-          <input className="input w-full" name="location" value={form.location} onChange={handleChange} required />
-        </div>
-        <div className="flex gap-4">
-          <div className="flex-1">
-            <label className="block font-semibold mb-1 text-indigo-600">{t("addPost.duration") || "Duration"}</label>
-            <input className="input w-full" name="duration" value={form.duration} onChange={handleChange} required placeholder="e.g. 2 days" />
-          </div>
-          <div className="flex-1">
-            <label className="block font-semibold mb-1 text-indigo-600">{t("addPost.date") || "Date"}</label>
-            <input className="input w-full" name="date" type="date" value={form.date} onChange={handleChange} required />
-          </div>
-        </div>
-        <div className="flex gap-4">
-          <div className="flex-1">
-            <label className="block font-semibold mb-1 text-indigo-600">{t("addPost.wageMin") || "Wage Min"}</label>
-            <input className="input w-full" name="wageMin" type="number" min="0" value={form.wageMin} onChange={handleChange} required />
-          </div>
-          <div className="flex-1">
-            <label className="block font-semibold mb-1 text-indigo-600">{t("addPost.wageMax") || "Wage Max"}</label>
-            <input className="input w-full" name="wageMax" type="number" min="0" value={form.wageMax} onChange={handleChange} required />
-          </div>
-        </div>
-        <div>
-          <label className="block font-semibold mb-1 text-indigo-600">
-            {t("addPost.requirements") || "Requirements"}
-            <span className="text-xs text-gray-400 ml-2">({t("common.comma_separated") || "comma separated"})</span>
+          <label className="block font-semibold mb-2 text-indigo-700">
+            {t("addPost.jobName") || "Job Name"}
           </label>
-          <input className="input w-full" name="requirements" value={form.requirements} onChange={handleChange} />
+          <select
+            className="w-full rounded-xl border border-gray-300 bg-white p-3 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            name="jobName"
+            value={form.jobName}
+            onChange={handleChange}
+            required
+          >
+            <option value="">-- Select Job --</option>
+            {JOB_OPTIONS.map((job, idx) => (
+              <option key={idx} value={job}>
+                {job}
+              </option>
+            ))}
+          </select>
         </div>
+
+        {/* Description */}
+        <div>
+          <label className="block font-semibold mb-2 text-indigo-700">
+            {t("addPost.description") || "Description"}
+          </label>
+          <textarea
+            className="w-full rounded-xl border border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            name="description"
+            value={form.description}
+            onChange={handleChange}
+            placeholder="Write job details here..."
+            required
+            rows={3}
+          />
+        </div>
+
+        {/* Location */}
+        <div>
+          <label className="block font-semibold mb-2 text-indigo-700">
+            {t("addPost.location") || "Location"}
+          </label>
+          <input
+            className="w-full rounded-xl border border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            name="location"
+            value={form.location}
+            onChange={handleChange}
+            placeholder="e.g. Chennai, Tamil Nadu"
+            required
+          />
+        </div>
+
+        {/* Duration & Date */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block font-semibold mb-2 text-indigo-700">
+              {t("addPost.duration") || "Duration"}
+            </label>
+            <input
+              className="w-full rounded-xl border border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              name="duration"
+              value={form.duration}
+              onChange={handleChange}
+              placeholder="e.g. 2 days"
+              required
+            />
+          </div>
+          <div>
+            <label className="block font-semibold mb-2 text-indigo-700">
+              {t("addPost.date") || "Date"}
+            </label>
+            <input
+              className="w-full rounded-xl border border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              name="date"
+              type="date"
+              value={form.date}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
+
+        {/* Wage */}
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
+          <div>
+            <label className="block font-semibold mb-2 text-indigo-700">
+              {t("addPost.wageMin") || "Wage Min"}
+            </label>
+            <input
+              className="w-full rounded-xl border border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              name="wageMin"
+              type="number"
+              min="0"
+              value={form.wageMin}
+              onChange={handleChange}
+              required
+            />
+          </div>
+          <div>
+            <label className="block font-semibold mb-2 text-indigo-700">
+              {t("addPost.wageMax") || "Wage Max"}
+            </label>
+            <input
+              className="w-full rounded-xl border border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+              name="wageMax"
+              type="number"
+              min="0"
+              value={form.wageMax}
+              onChange={handleChange}
+              required
+            />
+          </div>
+        </div>
+
+        {/* Requirements */}
+        <div>
+          <label className="block font-semibold mb-2 text-indigo-700">
+            {t("addPost.requirements") || "Requirements"}
+            <span className="text-xs text-gray-400 ml-2">
+              ({t("common.comma_separated") || "comma separated"})
+            </span>
+          </label>
+          <input
+            className="w-full rounded-xl border border-gray-300 p-3 shadow-sm focus:ring-2 focus:ring-indigo-500 focus:outline-none"
+            name="requirements"
+            value={form.requirements}
+            onChange={handleChange}
+            placeholder="e.g. Tools, Experience, License"
+          />
+        </div>
+
+        {/* Submit */}
         <button
           type="submit"
-          className="w-full py-3 bg-gradient-to-r from-indigo-500 to-indigo-700 text-white font-bold rounded-lg shadow hover:from-indigo-600 hover:to-indigo-800 transition-all"
+          className="w-full py-3 bg-gradient-to-r from-indigo-500 to-purple-600 text-white font-bold rounded-xl shadow-lg hover:from-indigo-600 hover:to-purple-700 transform hover:scale-105 transition-all"
           disabled={loading}
         >
-          {loading ? t("common.loading") : t("addPost.submit") || "Post Job"}
+          {loading ? t("common.loading") || "Posting..." : t("addPost.submit") || "Post Job"}
         </button>
-        {msg && <div className="mt-4 text-green-600 text-center font-semibold">{msg}</div>}
+
+        {/* Message */}
+        {msg && (
+          <div className="mt-4 text-green-600 text-center font-semibold animate-bounce">
+            {msg}
+          </div>
+        )}
       </form>
     </div>
   );

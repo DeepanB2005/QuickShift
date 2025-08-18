@@ -24,12 +24,11 @@ export const applyJoinRequest = async (req, res, next) => {
 
 export const getRequestsForUser = async (req, res, next) => {
   try {
-    // Find jobs posted by user
     const jobs = await Job.find({ user: req.user.id }).select("_id");
     const jobIds = jobs.map(j => j._id);
     const requests = await JoinRequest.find({ job: { $in: jobIds } })
       .populate("worker", "name email phone")
-      .populate("job", "jobName");
+      .populate("job", "jobName location description duration date wageMin wageMax requirements");
     res.json({ requests });
   } catch (err) {
     next(err);
@@ -39,7 +38,7 @@ export const getRequestsForUser = async (req, res, next) => {
 export const getRequestsForWorker = async (req, res, next) => {
   try {
     const requests = await JoinRequest.find({ worker: req.user.id })
-      .populate("job", "jobName location");
+      .populate("job", "jobName location description duration date wageMin wageMax requirements");
     res.json({ requests });
   } catch (err) {
     next(err);
