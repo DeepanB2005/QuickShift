@@ -74,58 +74,48 @@ export const translations = {
         contact: "Contact"
       },
       hero: {
-        title: "Home Services Made Easy",
-        subtitle: "Connect with skilled professionals for all your home service needs. Book trusted workers in minutes!"
+        title: "QuickShift: Connect with Blue Collar Workers",
+        subtitle: "Find trusted workers for your needs. Post jobs, filter by location & service, and manage requests easily."
       },
       services: {
-        title: "Popular Services",
-        subtitle: "From plumbing to painting, we've got you covered"
+        title: "Our Services",
+        home_repairs: "Home Repairs",
+        installation: "Installation",
+        maintenance: "Maintenance",
+        emergency: "Emergency",
+        home_repairs_desc: "Plumbing, electrical, carpentry",
+        installation_desc: "Appliances, fixtures, equipment",
+        maintenance_desc: "Regular upkeep and cleaning",
+        emergency_desc: "24/7 urgent repair services"
       },
-      how_it_works: {
-        title: "How It Works",
-        subtitle: "Get your work done in 3 simple steps",
-        step1: {
-          title: "Find Workers",
-          description: "Browse and search for skilled workers in your area"
-        },
-        step2: {
-          title: "Book Service",
-          description: "Select your preferred time and book instantly"
-        },
-        step3: {
-          title: "Get Work Done",
-          description: "Sit back and let our professionals handle the rest"
-        }
+      features: {
+        title: "Why Choose QuickShift",
+        skilled_workers: "Skilled Workers",
+        skilled_workers_desc: "Vetted professionals at your service",
+        secure_platform: "Secure Platform",
+        secure_platform_desc: "Safe payments and verified users",
+        easy_payments: "Easy Payments",
+        easy_payments_desc: "Integrated payment gateway",
+        location_based: "Location Based",
+        location_based_desc: "Find workers in your area"
       },
       stats: {
-        workers: "Skilled Workers",
-        bookings: "Happy Customers",
-        cities: "Cities Covered",
-        rating: "Average Rating"
-      },
-      testimonials: {
-        title: "What Our Customers Say",
-        subtitle: "Join thousands of satisfied customers"
+        active_workers: "Active Workers",
+        jobs_completed: "Jobs Completed",
+        avg_rating: "Average Rating",
+        support: "Support"
       },
       cta: {
         title: "Ready to Get Started?",
-        subtitle: "Join our platform today and experience hassle-free home services",
-        find_workers: "Find Workers",
-        become_worker: "Become a Worker"
+        subtitle: "Join thousands of satisfied customers who trust QuickShift for all their service needs",
+        start_journey: "Start Your Journey",
+        learn_more: "Learn More"
       },
       footer: {
-        description: "Your trusted platform for home services",
-        services: "Services",
-        company: "Company",
-        legal: "Legal",
-        about: "About Us",
-        contact: "Contact",
-        careers: "Careers",
-        help: "Help Center",
-        privacy: "Privacy Policy",
-        terms: "Terms of Service",
-        safety: "Safety",
-        rights: "All rights reserved."
+        privacy: "Privacy",
+        terms: "Terms",
+        support: "Support",
+        copyright: "© 2025 QuickShift. Empowering blue collar connections."
       }
     },
 
@@ -451,58 +441,56 @@ export const translations = {
         contact: "संपर्क"
       },
       hero: {
-        title: "घरेलू सेवाएं आसान बनीं",
-        subtitle: "अपनी सभी घरेलू सेवा आवश्यकताओं के लिए कुशल पेशेवरों से जुड़ें। मिनटों में विश्वसनीय कामगार बुक करें!"
+        title: "QuickShift: ब्लू कॉलर वर्कर्स से जुड़ें",
+        subtitle: "अपनी ज़रूरत के लिए भरोसेमंद कामगार खोजें। जॉब पोस्ट करें, स्थान और सेवा के अनुसार फ़िल्टर करें, और अनुरोध आसानी से प्रबंधित करें।"
       },
       services: {
-        title: "लोकप्रिय सेवाएं",
-        subtitle: "प्लंबिंग से लेकर पेंटिंग तक, हमारे पास सब कुछ है"
+        title: "हमारी सेवाएं",
+        home_repairs: "घर की मरम्मत",
+        installation: "स्थापना",
+        maintenance: "रखरखाव",
+        emergency: "आपातकालीन",
+        home_repairs_desc: "प्लंबिंग, इलेक्ट्रिकल, बढ़ईगीरी",
+        installation_desc: "उपकरण, फिटिंग, मशीनरी",
+        maintenance_desc: "नियमित सफाई और देखभाल",
+        emergency_desc: "24/7 आपातकालीन मरम्मत सेवाएं"
       },
-      how_it_works: {
-        title: "यह कैसे काम करता है",
-        subtitle: "3 आसान चरणों में अपना काम पूरा करवाएं",
-        step1: {
-          title: "कामगार खोजें",
-          description: "अपने क्षेत्र में कुशल कामगारों को खोजें और देखें"
-        },
-        step2: {
-          title: "सेवा बुक करें",
-          description: "अपना पसंदीदा समय चुनें और तुरंत बुक करें"
-        },
-        step3: {
-          title: "काम पूरा कराएं",
-          description: "आराम से बैठें और हमारे पेशेवरों को बाकी का काम संभालने दें"
-        }
+      features: {
+        title: "QuickShift क्यों चुनें",
+        skilled_workers: "कुशल कामगार",
+        skilled_workers_desc: "आपकी सेवा में प्रमाणित पेशेवर",
+        secure_platform: "सुरक्षित प्लेटफार्म",
+        secure_platform_desc: "सुरक्षित भुगतान और सत्यापित उपयोगकर्ता",
+        easy_payments: "आसान भुगतान",
+        easy_payments_desc: "एकीकृत भुगतान गेटवे",
+        location_based: "स्थान आधारित",
+        location_based_desc: "अपने क्षेत्र में कामगार खोजें"
       },
       stats: {
-        workers: "कुशल कामगार",
-        bookings: "खुश ग्राहक",
-        cities: "शहरों में सेवा",
-        rating: "औसत रेटिंग"
-      },
-      testimonials: {
-        title: "हमारे ग्राहक क्या कहते हैं",
-        subtitle: "हजारों संतुष्ट ग्राहकों में शामिल हों"
+        active_workers: "सक्रिय कामगार",
+        jobs_completed: "पूर्ण कार्य",
+        avg_rating: "औसत रेटिंग",
+        support: "सहायता"
       },
       cta: {
         title: "शुरू करने के लिए तैयार हैं?",
-        subtitle: "आज ही हमारे प्लेटफॉर्म से जुड़ें और परेशानी मुक्त घरेलू सेवाओं का अनुभव करें",
-        find_workers: "कामगार खोजें",
-        become_worker: "कामगार बनें"
+        subtitle: "हजारों संतुष्ट ग्राहक QuickShift पर भरोसा करते हैं",
+        start_journey: "अपनी यात्रा शुरू करें",
+        learn_more: "और जानें"
+      },
+      nav: {
+        services: "सेवाएं",
+        features: "विशेषताएँ",
+        about: "हमारे बारे में",
+        get_started: "शुरू करें",
+        login: "लॉगिन",
+        dashboard: "डैशबोर्ड"
       },
       footer: {
-        description: "घरेलू सेवाओं के लिए आपका भरोसेमंद प्लेटफॉर्म",
-        services: "सेवाएं",
-        company: "कंपनी",
-        legal: "कानूनी",
-        about: "हमारे बारे में",
-        contact: "संपर्क",
-        careers: "करियर",
-        help: "सहायता केंद्र",
-        privacy: "गोपनीयता नीति",
-        terms: "सेवा की शर्तें",
-        safety: "सुरक्षा",
-        rights: "सभी अधिकार सुरक्षित।"
+        privacy: "गोपनीयता",
+        terms: "शर्तें",
+        support: "सहायता",
+        copyright: "© 2025 QuickShift. ब्लू कॉलर कनेक्शन को सशक्त बनाना।"
       }
     },
 
@@ -737,8 +725,8 @@ export const translations = {
       pending: "लंबित",
       accepted: "स्वीकृत",
       rejected: "अस्वीकृत",
-      accept: "स्वीकारें",
-      reject: "अस्वीकारें"
+      accept: "स्वीकृत करें",
+      reject: "निराकरण करें"
     }
   },
 
@@ -815,61 +803,60 @@ export const translations = {
         contact: "தொடர்பு"
       },
       hero: {
-        title: "வீட்டு சேவைகள் எளிதாக்கப்பட்டது",
-        subtitle: "உங்கள் அனைத்து வீட்டு சேவை தேவைகளுக்கும் திறமையான நிபுணர்களுடன் இணைந்து கொள்ளுங்கள். நிமிடங்களில் நம்பகமான தொழிலாளர்களை புக் செய்யுங்கள்!"
+        title: "QuickShift: ப்ளூ காலர் தொழிலாளர்களுடன் இணைக",
+        subtitle: "உங்கள் தேவைக்கு நம்பகமான தொழிலாளர்களை கண்டறியுங்கள். வேலை பதிவிடுங்கள், இடம் மற்றும் சேவையை அடிப்படையாகக் கொண்டு வடிகட்டுங்கள், கோரிக்கைகளை எளிதாக நிர்வகிக்கவும்."
       },
       services: {
-        title: "பிரபலமான சேவைகள்",
-        subtitle: "பிளம்பிங் முதல் பெயிண்டிங் வரை, எங்களிடம் எல்லாம் உள்ளது"
+        title: "எங்கள் சேவைகள்",
+        home_repairs: "வீட்டு பழுது",
+        installation: "நிறுவல்",
+        maintenance: "பராமரிப்பு",
+        emergency: "அவசர சேவை",
+        home_repairs_desc: "பிளம்பிங், மின் வேலை, தச்சு வேலை",
+        installation_desc: "சாதனங்கள், பொருட்கள், உபகரணங்கள்",
+        maintenance_desc: "வழக்கமான பராமரிப்பு மற்றும் சுத்தம்",
+        emergency_desc: "24/7 அவசர பழுது சேவைகள்"
       },
-      how_it_works: {
-        title: "இது எப்படி வேலை செய்கிறது",
-        subtitle: "3 எளிய படிகளில் உங்கள் வேலையை முடிக்கவும்",
-        step1: {
-          title: "தொழிலாளர்களை தேடவும்",
-          description: "உங்கள் பகுதியில் திறமியான தொழிலாளர்களை உலாவவும் மற்றும் தேடவும்"
-        },
-        step2: {
-          title: "சேவையை புக் செய்யவும்",
-          description: "உங்கள் விருப்பமான நேரத்தை தேர்ந்தெடுத்து உடனே புக் செய்யவும்"
-        },
-        step3: {
-          title: "வேலை செய்ய வையுங்கள்",
-          description: "உட்கார்ந்து ஓய்வெடுங்கள், எங்கள் நிபுணர்கள் மீதியை கையாள அனுமதியுங்கள்"
-        }
+      features: {
+        title: "QuickShift ஏன் தேர்வு?",
+        skilled_workers: "திறமையான தொழிலாளர்கள்",
+        skilled_workers_desc: "உங்கள் சேவைக்கு சரிபார்க்கப்பட்ட நிபுணர்கள்",
+        secure_platform: "பாதுகாப்பான பிளாட்ஃபார்ம்",
+        secure_platform_desc: "பாதுகாப்பான பணப்பரிவர்த்தனை மற்றும் சரிபார்க்கப்பட்ட பயனர்கள்",
+        easy_payments: "எளிய பணப்பரிவர்த்தனை",
+        easy_payments_desc: "ஒருங்கிணைந்த பணப்பரிவர்த்தனை வாயில்",
+        location_based: "இடம் அடிப்படையிலான",
+        location_based_desc: "உங்கள் பகுதியில் தொழிலாளர்களை கண்டறியுங்கள்"
       },
       stats: {
-        workers: "திறமையான தொழிலாளர்கள்",
-        bookings: "மகிழ்ச்சியான வாடிக்கையாளர்கள்",
-        cities: "நகரங்களில் சேவை",
-        rating: "சராசரி மதிப்பீடு"
-      },
-      testimonials: {
-        title: "எங்கள் வாடிக்கையாளர்கள் என்ன சொல்கிறார்கள்",
-        subtitle: "ஆயிரக்கணக்கான திருப்தியடைந்த வாடிக்கையாளர்களில் சேருங்கள்"
+        active_workers: "செயலில் உள்ள தொழிலாளர்கள்",
+        jobs_completed: "முடிக்கப்பட்ட வேலைகள்",
+        avg_rating: "சராசரி மதிப்பீடு",
+        support: "உதவி"
       },
       cta: {
         title: "தொடங்க தயாரா?",
-        subtitle: "இன்றே எங்கள் பிளாட்ஃபார்மில் சேர்ந்து கவலையற்ற வீட்டு சேவைகளை அனுபவிக்கவும்",
-        find_workers: "தொழிலாளர்களை தேடவும்",
-        become_worker: "தொழிலாளராக ஆகவும்"
+        subtitle: "ஆயிரக்கணக்கான மகிழ்ச்சியான வாடிக்கையாளர்கள் QuickShift-ஐ நம்புகிறார்கள்",
+        start_journey: "உங்கள் பயணத்தை தொடங்குங்கள்",
+        learn_more: "மேலும் அறிய"
+      },
+      nav: {
+        services: "சேவைகள்",
+        features: "சிறப்பம்சங்கள்",
+        about: "எங்களைப் பற்றி",
+        get_started: "தொடங்கவும்",
+        login: "உள்நுழைவு",
+        dashboard: "டாஷ்போர்டு"
       },
       footer: {
-        description: "வீட்டு சேவைகளுக்கான உங்கள் நம்பகமான பிளாட்ஃபார்ம்",
-        services: "சேவைகள்",
-        company: "நிறுவனம்",
-        legal: "சட்டபூர்வமான",
-        about: "எங்களைப் பற்றி",
-        contact: "தொடர்பு",
-        careers: "தொழில் வாய்ப்புகள்",
-        help: "உதவி மையம்",
-        privacy: "தனியுரிமை கொள்கை",
-        terms: "சேவை விதிமுறைகள்",
-        safety: "பாதுகாப்பு",
-        rights: "அனைத்து உரிமைகளும் பாதுகாக்கப்பட்டுள்ளன."
+        privacy: "தனியுரிமை",
+        terms: "விதிமுறைகள்",
+        support: "உதவி",
+        copyright: "© 2025 QuickShift. ப்ளூ காலர் இணைப்பை வலுப்படுத்துகிறது."
       }
     },
 
+    // Login Page
     login: {
       welcome_back: "மீண்டும் வரவேற்கிறோம்",
       title: "உங்கள் கணக்கில் உள்நுழையவும்",
