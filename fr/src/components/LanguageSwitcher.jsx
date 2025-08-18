@@ -11,7 +11,7 @@ export default function LanguageSwitcher() {
     <select
       value={lang}
       onChange={change}
-      className="border rounded px-2 py-1 bg-gray-50 text-gray-700"
+      className="shadow-gray-800 shadow-3xl px-2 py-1 bg-gradient-to-l from-green-300 to-blue-300 rounded-3xl text-gray-700"
       aria-label="Change language"
     >
       <option value="en">English</option>
