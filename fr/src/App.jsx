@@ -26,7 +26,14 @@ export default function App() {
 
 function Nav() {
   const token = localStorage.getItem("token");
-  const userName = token ? JSON.parse(atob(token.split('.')[1])).email : null;
+  let userName = null;
+  if (token) {
+    try {
+      userName = JSON.parse(atob(token.split('.')[1])).name;
+    } catch {
+      userName = null;
+    }
+  }
 
   return (
     <nav className="flex items-center justify-between px-4 py-3 bg-white shadow">
@@ -34,12 +41,12 @@ function Nav() {
       <div className="flex gap-3 items-center">
         <LanguageSwitcher />
         {token ? (
-          <>
-            <span>{userName}</span>
-            <button onClick={() => { localStorage.removeItem("token"); window.location.reload(); }}>
-              Logout
-            </button>
-          </>
+          <Link
+            className="text-sm px-3 py-2 bg-indigo-600 text-white rounded"
+            to="/dashboard"
+          >
+            {userName || "Dashboard"}
+          </Link>
         ) : (
           <Link className="text-sm px-3 py-2 bg-indigo-600 text-white rounded" to="/auth">Login</Link>
         )}
