@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { useI18n } from "../../../i18n/I18nProvider";
+import ApplyRequestButton from "../../../components/ApplyRequestButton"; // Adjust the import path as necessary
 
 const API = import.meta.env.VITE_API_URL || "http://localhost:5000";
 
@@ -10,6 +11,7 @@ export default function JobPostsSection() {
   const [loading, setLoading] = useState(true);
   const [search, setSearch] = useState("");
   const [location, setLocation] = useState("");
+  const [role, setRole] = useState("worker"); // Assuming a default role, adjust as necessary
 
   useEffect(() => {
     axios.get(`${API}/api/jobs/all`)
@@ -58,6 +60,9 @@ export default function JobPostsSection() {
               <div className="text-sm text-gray-500">{job.location} | {job.duration} | {job.date ? job.date.slice(0, 10) : ""}</div>
               <div className="text-sm text-gray-500">{t("addPost.wageMin") || "Wage Min"}: {job.wageMin} | {t("addPost.wageMax") || "Wage Max"}: {job.wageMax}</div>
               <div className="text-sm text-gray-500">{t("addPost.requirements") || "Requirements"}: {(job.requirements || []).join(", ")}</div>
+              {role === "worker" && (
+                <ApplyRequestButton jobId={job._id} />
+              )}
             </div>
           ))}
         </div>

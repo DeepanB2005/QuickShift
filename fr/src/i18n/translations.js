@@ -300,6 +300,7 @@ export const translations = {
       myBookings: "My Bookings",
       requests: "Requests"
     },
+    
     sections: {
       profile: "Profile",
       addPost: "Add Post",
@@ -309,6 +310,11 @@ export const translations = {
       myBookings: "My Bookings",
       requests: "Requests"
     },
+    jobPosts:
+    {
+      title: "JOB POSTS"
+    },
+
     profile: {
       name: "Name",
       email: "Email",
@@ -350,6 +356,21 @@ export const translations = {
       updated: "Job updated.",
       deleted: "Job deleted.",
       confirmDelete: "Delete this job?"
+    },
+    joinRequests: {
+      title: "Join Requests",
+      noRequests: "No join requests yet.",
+      apply: "Apply",
+      message: "Message (optional)",
+      send: "Send",
+      cancel: "Cancel",
+      applied: "Request sent!",
+      status: "Status",
+      pending: "Pending",
+      accepted: "Accepted",
+      rejected: "Rejected",
+      accept: "Accept",
+      reject: "Reject"
     }
   },
 
@@ -409,6 +430,10 @@ export const translations = {
       address: "पता",
       years: "साल",
       and: "और"
+    },
+    jobPosts:
+    {
+      title: "नौकरी पोस्ट्स"
     },
 
     // Home Page
@@ -699,6 +724,21 @@ export const translations = {
       updated: "जॉब अपडेट की गई।",
       deleted: "जॉब हटा दी गई।",
       confirmDelete: "क्या आप इस जॉब को हटाना चाहते हैं?"
+    },
+    joinRequests: {
+      title: "जॉइन अनुरोध",
+      noRequests: "कोई अनुरोध नहीं है।",
+      apply: "आवेदन करें",
+      message: "संदेश (वैकल्पिक)",
+      send: "भेजें",
+      cancel: "रद्द करें",
+      applied: "अनुरोध भेजा गया!",
+      status: "स्थिति",
+      pending: "लंबित",
+      accepted: "स्वीकृत",
+      rejected: "अस्वीकृत",
+      accept: "स्वीकारें",
+      reject: "अस्वीकारें"
     }
   },
 
@@ -897,6 +937,9 @@ export const translations = {
         password_min_length: "கடவுச்சொல் குறைந்தது 6 எழுத்துக்களாக இருக்க வேண்டும்",
         passwords_dont_match: "கடவுச்சொற்கள் பொருந்தவில்லை"
       }
+    },jobPosts:
+    {
+      title: "வேலை பதிவுகள்"
     },
 
     dashboard: {
@@ -1045,6 +1088,21 @@ export const translations = {
       updated: "வேலை புதுப்பிக்கப்பட்டது.",
       deleted: "வேலை நீக்கப்பட்டது.",
       confirmDelete: "இந்த வேலை பதிவை நீக்க விரும்புகிறீர்களா?"
+    },
+    joinRequests: {
+      title: "சேர்க்கும் கோரிக்கைகள்",
+      noRequests: "கோரிக்கைகள் இல்லை.",
+      apply: "விண்ணப்பிக்கவும்",
+      message: "செய்தி (விரும்பினால்)",
+      send: "அனுப்பவும்",
+      cancel: "ரத்து செய்யவும்",
+      applied: "கோரிக்கை அனுப்பப்பட்டது!",
+      status: "நிலை",
+      pending: "நிலுவையில்",
+      accepted: "ஏற்கப்பட்டது",
+      rejected: "நிராகரிக்கப்பட்டது",
+      accept: "ஏற்கவும்",
+      reject: "நிராகரிக்கவும்"
     }
   }
 };
