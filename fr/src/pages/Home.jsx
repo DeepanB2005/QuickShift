@@ -101,7 +101,7 @@ export default function Home() {
 
       <div className="px-4 md:px-8 lg:px-0 max-w- mx-auto">
         {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center px-4 pt-20">
+        <section className="relative min-h-screen flex items-center justify-center px-4">
           <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 backdrop-blur-3xl"></div>
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-20 -right-20 w-40 h-40 sm:w-80 sm:h-80 bg-blue-700/30 rounded-full blur-3xl animate-pulse"></div>
@@ -112,7 +112,7 @@ export default function Home() {
               <Star className="w-4 h-4 text-yellow-400 mr-2" />
               <span className="text-sm">{t("home.stats.active_workers")}</span>
             </div>
-            <h1 className="text-3xl md:text-6xl font-bold mb-6 leading-tight">
+            <h1 className="text-2xl md:text-4xl font-bold mb-6 leading-tight">
               {t("home.hero.title")}
               <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
                 {t("home.hero.subtitle")}

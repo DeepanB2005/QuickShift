@@ -73,14 +73,14 @@ export default function AddPostSection() {
   };
 
   return (
-    <div className="bg-gradient-to-br from-indigo-50 to-purple-100 rounded-2xl shadow-2xl p-10 max-w-2xl mx-auto mt-8">
-      <h2 className="text-3xl font-extrabold mb-6 text-indigo-800 text-center">
+    <div className="bg-gradient-to-br from-indigo-50 to-purple-100 rounded-2xl shadow-2xl p-8 max-w-2xl mx-auto mt-">
+      <h2 className="text-3xl font-extrabold mb- text-indigo-800 text-center">
         {t("addPost.title") || "🚀 Post a Job"}
       </h2>
       <form className="space-y-6" onSubmit={handleSubmit}>
         {/* Job Name */}
         <div>
-          <label className="block font-semibold mb-2 text-indigo-700">
+          <label className="block font-semibold mb- text-indigo-700">
             {t("addPost.jobName") || "Job Name"}
           </label>
           <select
@@ -101,7 +101,7 @@ export default function AddPostSection() {
 
         {/* Description */}
         <div>
-          <label className="block font-semibold mb-2 text-indigo-700">
+          <label className="block font-semibold mb- text-indigo-700">
             {t("addPost.description") || "Description"}
           </label>
           <textarea
@@ -117,7 +117,7 @@ export default function AddPostSection() {
 
         {/* Location */}
         <div>
-          <label className="block font-semibold mb-2 text-indigo-700">
+          <label className="block font-semibold mb- text-indigo-700">
             {t("addPost.location") || "Location"}
           </label>
           <input

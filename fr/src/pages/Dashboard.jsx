@@ -30,7 +30,7 @@ export default function Dashboard() {
   if (!user) return <div className="mt-10 text-center">{t("common.loading")}</div>;
 
   return (
-    <div className="flex min-h-screen bg-gray-100">
+    <div className="flex min-h-screen bg-gradient-to-t from-blue-300 to-violet-200">
       {/* Sidebar */}
       <DashboardSidebar
         role={user.role}
@@ -40,7 +40,7 @@ export default function Dashboard() {
       {/* Main content area */}
       <div className="flex-1 flex flex-col relative">
         {/* Navbar - fixed to top right, does not push down sidebar */}
-        <nav className="absolute top-0 right-0 w-full h-16 bg-white shadow flex items-center justify-end px-8 z-10 gap-6">
+        <nav className="absolute top-0 right-0 w-full h-16 shadow flex items-center justify-end px-8 z-10 gap-6">
           <span className="text-gray-700 font-semibold">{user.name}</span>
           <button
             className="px-4 py-2 bg-indigo-100 text-indigo-700 rounded hover:bg-indigo-200 font-medium"

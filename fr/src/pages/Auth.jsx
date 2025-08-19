@@ -98,7 +98,7 @@ export default function Auth() {
   };
 
   return (
-    <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-500 via-purple-500 to-pink-500">
+    <div className="min-h-screen flex flex-col bg-gradient-to-br from-indigo-500 via-purple-500 to-blue-900">
       {/* Navbar */}
       <nav className="flex items-center justify-between px-6 py-4 bg-white/30 backdrop-blur-md shadow-md fixed top-0 left-0 w-full z-20">
         <Link to="/" className="font-bold text-2xl text-white drop-shadow">
