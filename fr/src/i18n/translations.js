@@ -673,7 +673,6 @@ export const translations = {
       }
     },
 
-    // Dashboard Sidebar & Sections
     sidebar: {
       profile: "प्रोफ़ाइल",
       addPost: "पोस्ट जोड़ें",
