@@ -1,29 +1,38 @@
-import React, { createContext, useContext, useMemo, useState } from "react";
-import { translations } from "./translations";
-
+import React, { createContext, useContext, useState } from "react";
 const I18nContext = createContext();
 
-export const I18nProvider = ({ children }) => {
-  const [lang, setLang] = useState(localStorage.getItem("lang") || "en");
+export function I18nProvider({ children }) {
+  const [lang, setLang] = useState("en");
 
-  const t = useMemo(() => {
-    const dict = translations[lang] || translations.en;
-    return (path, vars={}) => {
-      const parts = path.split(".");
-      let cur = dict;
-      for (const p of parts) cur = cur?.[p];
-      if (typeof cur === "string") {
-        return cur.replace(/\{\{(\w+)\}\}/g, (_, k) => vars[k] ?? "");
-      }
-      return path;
-    };
-  }, [lang]);
+  // Async translation function
+  async function translateText(text, fallback = "") {
+    if (!text) return fallback;
+    if (lang === "en") return text;
+    try {
+      const res = await fetch("http://localhost:3000/translate", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify({ texts: [text], targetLanguage: lang }),
+      });
+      const data = await res.json();
+      return data.translations?.[0] ?? fallback ?? text;
+    } catch {
+      return fallback ?? text;
+    }
+  }
 
-  const value = useMemo(() => ({
-    lang, setLang, t
-  }), [lang, t]);
+  // Synchronous t for JSX (returns original text immediately)
+  function t(text, fallback = "") {
+    return text ?? fallback;
+  }
 
-  return <I18nContext.Provider value={value}>{children}</I18nContext.Provider>;
-};
+  return (
+    <I18nContext.Provider value={{ t, lang, setLang, translateText }}>
+      {children}
+    </I18nContext.Provider>
+  );
+}
 
-export const useI18n = () => useContext(I18nContext);
+export function useI18n() {
+  return useContext(I18nContext);
+}
