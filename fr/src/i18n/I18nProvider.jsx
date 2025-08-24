@@ -4,10 +4,43 @@ import { flattenTranslations } from "./flattenTranslations";
 
 const I18nContext = createContext();
 
+// Supported languages
+const SUPPORTED_LANGUAGES = ["en", "es", "hi", "ta", "fr"];
+
 export function I18nProvider({ children }) {
-  const [lang, setLang] = useState("en");
+  // Initialize language from localStorage or default to "en"
+  const [lang, setLang] = useState(() => {
+    try {
+      const savedLang = localStorage.getItem("selectedLanguage");
+      // Validate that the saved language is supported
+      if (savedLang && SUPPORTED_LANGUAGES.includes(savedLang)) {
+        return savedLang;
+      }
+      return "en";
+    } catch (error) {
+      console.warn("Could not access localStorage:", error);
+      return "en";
+    }
+  });
+  
   const [translatedMap, setTranslatedMap] = useState({});
   const [isTranslating, setIsTranslating] = useState(false);
+
+  // Custom setLang function that persists to localStorage
+  const setLanguage = (newLang) => {
+    // Validate the language
+    if (!SUPPORTED_LANGUAGES.includes(newLang)) {
+      console.warn(`Unsupported language: ${newLang}`);
+      return;
+    }
+    
+    try {
+      localStorage.setItem("selectedLanguage", newLang);
+    } catch (error) {
+      console.warn("Could not save language to localStorage:", error);
+    }
+    setLang(newLang);
+  };
 
   // Async translation function for individual texts
   async function translateText(text, fallback = "") {
@@ -41,6 +74,11 @@ export function I18nProvider({ children }) {
           targetLanguage: lang,
         }),
       });
+      
+      if (!response.ok) {
+        throw new Error(`Translation API error: ${response.status}`);
+      }
+      
       const data = await response.json();
       return data.translations || texts;
     } catch (err) {
@@ -77,6 +115,17 @@ export function I18nProvider({ children }) {
     return originalText || fallback;
   }
 
+  // Effect to initialize English translations immediately
+  useEffect(() => {
+    // Always load English translations first for immediate display
+    const flat = flattenTranslations(translations.en);
+    const englishMap = {};
+    flat.forEach(({ key, text }) => { 
+      englishMap[key] = text; 
+    });
+    setTranslatedMap(englishMap);
+  }, []); // Run only once on mount
+
   // Effect to translate all texts when language changes
   useEffect(() => {
     async function fetchAllTranslations() {
@@ -100,13 +149,19 @@ export function I18nProvider({ children }) {
         const texts = flat.map(({ text }) => text);
         
         // Translate all texts in batches to avoid overwhelming the API
-        const batchSize = 50;
+        const batchSize = 30; // Reduced batch size for better reliability
         const translatedTexts = [];
         
         for (let i = 0; i < texts.length; i += batchSize) {
           const batch = texts.slice(i, i + batchSize);
-          const translatedBatch = await translateTexts(batch);
-          translatedTexts.push(...translatedBatch);
+          try {
+            const translatedBatch = await translateTexts(batch);
+            translatedTexts.push(...translatedBatch);
+          } catch (batchError) {
+            console.warn(`Batch translation failed for batch ${i / batchSize + 1}:`, batchError);
+            // Use original texts as fallback for this batch
+            translatedTexts.push(...batch);
+          }
         }
         
         // Create the translation map
@@ -137,11 +192,12 @@ export function I18nProvider({ children }) {
     <I18nContext.Provider value={{ 
       t, 
       lang, 
-      setLang: setLang, // This will be used by LanguageSwitcher
+      setLang: setLanguage, // Use the custom function that persists to localStorage
       translateText, 
       translateTexts, 
       translatedMap,
-      isTranslating 
+      isTranslating,
+      supportedLanguages: SUPPORTED_LANGUAGES
     }}>
       {children}
     </I18nContext.Provider>
