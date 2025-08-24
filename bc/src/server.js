@@ -15,7 +15,10 @@ const app = express();
 app.use(helmet());
 app.use(express.json());
 app.use(cors({
-  origin: process.env.FRONTEND_URL,
+  origin: [
+    "http://localhost:5173", // local dev
+    "https://quick-shift-net.vercel.app" // production
+  ],
   credentials: false
 }));
 
