@@ -7,6 +7,7 @@ import { connectDB } from "./config/db.js";
 import authRoutes from "./routes/auth.routes.js";
 import jobRoutes from "./routes/job.routes.js";
 import joinRequestRoutes from "./routes/joinRequest.routes.js";
+import translateRoutes from "./translate.js";
 
 dotenv.config();
 const app = express();
@@ -25,6 +26,7 @@ app.get("/", (_req, res) => res.send("QuickShift API is running"));
 app.use("/api/auth", authRoutes);
 app.use("/api/jobs", jobRoutes);
 app.use("/api/join-requests", joinRequestRoutes);
+app.use("/translate", translateRoutes);
 
 // global error handler
 app.use((err, _req, res, _next) => {
