@@ -4,6 +4,8 @@ import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import { useI18n } from "../i18n/I18nProvider";
 import { ChevronRight, Users, Shield, CreditCard, MapPin, Search, Star, ArrowRight, Menu, X, Wrench, Zap, Clock } from 'lucide-react';
 
+const API = import.meta.env.VITE_API_URL; // resolves to https://quickshift-11fb.onrender.com
+
 export default function Home() {
   const { t, isTranslating } = useI18n();
   const [isMenuOpen, setIsMenuOpen] = useState(false);
