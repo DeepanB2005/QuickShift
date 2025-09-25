@@ -14,8 +14,11 @@ From home repairs to moving services, our goal is to make hiring as simple as ta
 
 ## Tech Stack
 **Frontend:** React+vite, TailwindCSS  
-**Backend:** Node.js, Express.js, Socket.IO  
+**Backend:** Node.js, Express.js,
 **Database:** MongoDB  
 **Payments:** billdesk
 **Integrations:** Google Maps API, Firebase Cloud Messaging  
-**Hosting:**  AWS
+**Hosting:**  live on vercel,render 
+## access point live on : https://quick-shift-net.vercel.app/
+
+## npx @react-native-community/cli init QuickShiftMobileNative
