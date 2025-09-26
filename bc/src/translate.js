@@ -28,7 +28,7 @@ router.post("/", async (req, res) => {
           target: targetLanguage,
           key: GOOGLE_API_KEY,
         },
-        paramsSerializer: params => qs.stringify(params, { arrayFormat: "repeat" }) // Fix for array
+        paramsSerializer: params => qs.stringify(params, { arrayFormat: "repeat" })
       }
     );
 

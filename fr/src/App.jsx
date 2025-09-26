@@ -11,7 +11,7 @@ export default function App() {
 
   return (
     <I18nProvider>
-    <div className="min-h-screen bg-gray-50">
+    <div className="min-h-screen bg-gray-50 font-serif">
       <main className={isDashboard ? "p-0" : "w-full px-0"}>
         <Routes>
           <Route path="/" element={<Home />} />

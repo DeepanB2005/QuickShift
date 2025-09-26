@@ -7,7 +7,7 @@ export function useTranslation() {
   const [language, setLanguage] = useState("en");
 
   async function translateTexts(texts) {
-    if (language === "en") return texts; // No translation needed for English
+    if (language === "en") return texts; 
 
     try {
       const response = await axios.post(API_URL, {

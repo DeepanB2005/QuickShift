@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
 import { useI18n } from "../i18n/I18nProvider";
 import { ChevronRight, Users, Shield, CreditCard, MapPin, Search, Star, ArrowRight, Menu, X, Wrench, Zap, Clock } from 'lucide-react';
+import bgBlocks from "../../public/linkdinbg.jpg"; // adjust path as needed
 
 const API = import.meta.env.VITE_API_URL; // resolves to https://quickshift-11fb.onrender.com
 
@@ -82,14 +83,16 @@ export default function Home() {
   ];
 
   return (
-    <div className={`w-full min-h-screen bg-slate-950 text-gray-100 ${isTranslating ? 'opacity-90' : ''}`}>
-      {/* Loading overlay for translations */}
+    <div
+      className={`w-full min-h-screen bg-gradient-to-t from-red-500 via-black-900 to-blue-300 text-gray-100 ${isTranslating ? 'opacity-90' : ''}`}
+      
+    >
       {isTranslating && (
-        <div className="fixed top-0 left-0 w-full h-1 bg-blue-600 animate-pulse z-50"></div>
+        <div className="fixed top-0 left-0 w-full h-1 bg-blue-400 animate-pulse z-50"></div>
       )}
 
       {/* Navigation */}
-      <nav className={`flex items-center justify-between px-6 py-4 fixed top-0 left-0 w-full z-20 shadow-md transition-all duration-300 ${scrollY > 50 ? 'bg-slate-900/95 backdrop-blur-md' : 'bg-transparent'}`}>
+      <nav className={`flex items-center justify-between px-6 py-4 fixed top-0 left-0 w-full z-20 shadow-md transition-all duration-300 ${scrollY > 50 ? 'bg-blue-500 text-black backdrop-blur-md' : 'bg-transparent'}`}>
         <Link to="/" className="font-bold text-xl text-blue-400">QuickShift</Link>
         <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
           <a href="#services" className="hover:text-blue-400 transition-colors">{t("home.nav.services")}</a>
@@ -141,13 +144,13 @@ export default function Home() {
       <div className="px-4 md:px-8 lg:px-0 max-w- mx-auto">
         {/* Hero Section */}
         <section className="relative min-h-screen flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/20 to-cyan-900/20 backdrop-blur-3xl"></div>
+          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 to-cyan-900/10"></div>
           <div className="absolute inset-0 overflow-hidden">
             <div className="absolute -top-20 -right-20 w-40 h-40 sm:w-80 sm:h-80 bg-blue-700/30 rounded-full blur-3xl animate-pulse"></div>
             <div className="absolute -bottom-20 -left-20 w-40 h-40 sm:w-80 sm:h-80 bg-cyan-700/30 rounded-full blur-3xl animate-pulse"></div>
           </div>
           <div className="relative max-w-7xl mx-auto text-center">
-            <div className="inline-flex items-center px-3 py-2 bg-blue-500/20 rounded-full mb-6 backdrop-blur-sm border border-blue-400/30">
+            <div className="inline-flex items-center px-3 py-2 bg-blue-500/20 rounded-full mb-6  border border-blue-400/30">
               <Star className="w-4 h-4 text-yellow-400 mr-2" />
               <span className="text-sm">{t("home.stats.active_workers")}</span>
             </div>
