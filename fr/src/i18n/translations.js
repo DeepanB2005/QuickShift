@@ -1,4 +1,3 @@
-
 export const translations = {
   en: {
     common: {
@@ -57,7 +56,6 @@ export const translations = {
       and: "and"
     },
 
-    // Home Page
     home: {
       welcome: "Welcome",
       login: "Login",
@@ -74,8 +72,14 @@ export const translations = {
         dashboard: "Dashboard"
       },
       hero: {
-        title: "QuickShift: Connect with Blue Collar Workers",
-        subtitle: "Find trusted workers for your needs. Post jobs, filter by location & service, and manage requests easily."
+        title: "Efficient Connect with Blue Collar Workers",
+        subtitle: "Find trusted workers for your needs. Post jobs, filter by location & service, and manage requests easily.",
+        simple_bookings: "Simple Bookings",
+        simple_bookings_desc: "Book services in just a few clicks with instant confirmation.",
+        verified_workers: "Verified Workers",
+        verified_workers_desc: "All workers are background-checked and reviewed by customers.",
+        secure_payments: "Secure Payments",
+        secure_payments_desc: "Pay safely through our platform with multiple payment options."
       },
       services: {
         title: "Our Services",
@@ -97,25 +101,48 @@ export const translations = {
         easy_payments: "Easy Payments",
         easy_payments_desc: "Integrated payment gateway",
         location_based: "Location Based",
-        location_based_desc: "Find workers in your area"
+        location_based_desc: "Find workers in your area",
+        book_instantly: "Book Instantly",
+        book_instantly_desc: "Instantly book available workers for urgent needs.",
+        manage_teams: "Manage Teams",
+        manage_teams_desc: "Easily organize and manage your workforce.",
+        learn_more_business: "Learn more for businesses",
+        on_demand_services: "On-Demand Services",
+        on_demand_services_desc: "Access a wide range of services anytime.",
+        browse_services: "Browse Services",
+        workforce_solutions: "Workforce Solutions",
+        workforce_solutions_desc: "Flexible solutions for businesses of all sizes.",
+        explore_business_plans: "Explore Business Plans",
+        skilling_certification: "Skilling & Certification",
+        skilling_certification_desc: "Upskill with certified courses for workers.",
+        view_courses: "View Courses"
       },
-      stats: {
-        active_workers: "Active Workers",
-        jobs_completed: "Jobs Completed",
-        avg_rating: "Average Rating",
-        support: "Support"
+      how_works: {
+        title: "How It Works",
+        subtitle: "Book, schedule, and pay for services in three easy steps.",
+        choose_service: "Choose a Service",
+        choose_service_desc: "Browse and select the service you need.",
+        schedule_confirm: "Schedule & Confirm",
+        schedule_confirm_desc: "Pick a time and confirm your booking.",
+        pay_review: "Pay & Review",
+        pay_review_desc: "Pay securely and leave a review after the job is done."
       },
-      cta: {
-        title: "Ready to Get Started?",
-        subtitle: "Join thousands of satisfied customers who trust QuickShift for all their service needs",
-        start_journey: "Start Your Journey",
-        learn_more: "Learn More"
+      partners: {
+        title: "Our Partners",
+        subtitle: "Trusted by leading organizations and businesses."
       },
       footer: {
-        privacy: "Privacy",
-        terms: "Terms",
-        support: "Support",
-        copyright: "© 2025 QuickShift. Empowering blue collar connections."
+        description: "QuickShift connects you with skilled blue collar workers for all your service needs.",
+        contact: "Contact",
+        address: "123 Main Street, City, Country",
+        phone: "+1 234 567 890",
+        email: "support@quickshift.com",
+        explore: "Explore",
+        for_businesses: "For Businesses",
+        for_workers: "For Workers",
+        for_learners: "For Learners",
+        careers: "Careers",
+        copyright: "Empowering blue collar connections."
       }
     },
 

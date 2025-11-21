@@ -1,297 +1,246 @@
-import React, { useState, useEffect } from "react";
-import { Link } from "react-router-dom";
-import LanguageSwitcher from "../components/LanguageSwitcher.jsx";
-import { useI18n } from "../i18n/I18nProvider";
-import { ChevronRight, Users, Shield, CreditCard, MapPin, Search, Star, ArrowRight, Menu, X, Wrench, Zap, Clock } from 'lucide-react';
-import bgBlocks from "../../public/linkdinbg.jpg"; // adjust path as needed
+import React, { useState, useEffect } from 'react';
+import { Link } from 'react-router-dom';
+import LanguageSwitcher from '../components/LanguageSwitcher.jsx';
+import { useI18n } from '../i18n/I18nProvider';
+import { Menu, X, ChevronRight, Zap } from 'lucide-react';
 
-const API = import.meta.env.VITE_API_URL; // resolves to https://quickshift-11fb.onrender.com
+// External hero & illustrations (royalty-free placeholders)
+const HERO = "/image.png";
+const FEATURE_1 = 'https://images.unsplash.com/photo-1542744095-291d1f67b221?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=abc123def456ghi789jkl0mnopqrstu';
+const FEATURE_2 = '/i1.png';
+const FEATURE_3 = 'https://images.unsplash.com/photo-1504384308090-c894fdcc538d?q=80&w=1200&auto=format&fit=crop&ixlib=rb-4.0.3&s=ghi789abc123def456jkl0mnopqrstu';
 
 export default function Home() {
-  const { t, isTranslating } = useI18n();
-  const [isMenuOpen, setIsMenuOpen] = useState(false);
-  const [activeService, setActiveService] = useState(0);
-  const [scrollY, setScrollY] = useState(0);
+  const { t, lang, setLang } = useI18n();
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const token = localStorage.getItem('token');
 
+  // Set English as default language on mount
   useEffect(() => {
-    const handleScroll = () => setScrollY(window.scrollY);
-    window.addEventListener("scroll", handleScroll);
-    return () => window.removeEventListener("scroll", handleScroll);
-  }, []);
-
-  const token = localStorage.getItem("token");
-  let userName = null;
-  if (token) {
-    try {
-      userName = JSON.parse(atob(token.split('.')[1])).name;
-    } catch {
-      userName = null;
-    }
-  }
-
-  const services = [
-    { 
-      icon: Wrench, 
-      title: t("home.services.home_repairs"), 
-      desc: t("home.services.home_repairs_desc") 
-    },
-    { 
-      icon: Zap, 
-      title: t("home.services.installation"), 
-      desc: t("home.services.installation_desc") 
-    },
-    { 
-      icon: Users, 
-      title: t("home.services.maintenance"), 
-      desc: t("home.services.maintenance_desc") 
-    },
-    { 
-      icon: Clock, 
-      title: t("home.services.emergency"), 
-      desc: t("home.services.emergency_desc") 
-    }
-  ];
-
-  const features = [
-    { 
-      icon: Users, 
-      title: t("home.features.skilled_workers"), 
-      desc: t("home.features.skilled_workers_desc") 
-    },
-    { 
-      icon: Shield, 
-      title: t("home.features.secure_platform"), 
-      desc: t("home.features.secure_platform_desc") 
-    },
-    { 
-      icon: CreditCard, 
-      title: t("home.features.easy_payments"), 
-      desc: t("home.features.easy_payments_desc") 
-    },
-    { 
-      icon: MapPin, 
-      title: t("home.features.location_based"), 
-      desc: t("home.features.location_based_desc") 
-    }
-  ];
-
-  const stats = [
-    { number: "10K+", label: t("home.stats.active_workers") },
-    { number: "50K+", label: t("home.stats.jobs_completed") },
-    { number: "4.9", label: t("home.stats.avg_rating") },
-    { number: "24/7", label: t("home.stats.support") }
-  ];
+    if (lang !== 'en') setLang('en');
+  }, [lang, setLang]);
 
   return (
-    <div
-      className={`w-full min-h-screen bg-gradient-to-t from-red-500 via-black-900 to-blue-300 text-gray-100 ${isTranslating ? 'opacity-90' : ''}`}
-      
-    >
-      {isTranslating && (
-        <div className="fixed top-0 left-0 w-full h-1 bg-blue-400 animate-pulse z-50"></div>
-      )}
-
-      {/* Navigation */}
-      <nav className={`flex items-center justify-between px-6 py-4 fixed top-0 left-0 w-full z-20 shadow-md transition-all duration-300 ${scrollY > 50 ? 'bg-blue-500 text-black backdrop-blur-md' : 'bg-transparent'}`}>
-        <Link to="/" className="font-bold text-xl text-blue-400">QuickShift</Link>
-        <div className="hidden md:flex items-center space-x-6 lg:space-x-8">
-          <a href="#services" className="hover:text-blue-400 transition-colors">{t("home.nav.services")}</a>
-          <a href="#features" className="hover:text-blue-400 transition-colors">{t("home.nav.features")}</a>
-          <a href="#about" className="hover:text-blue-400 transition-colors">{t("home.nav.about")}</a>
-          <button 
-            onClick={() => window.location.href = '/auth'}
-            className="px-4 py-2 lg:px-6 lg:py-2 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full hover:from-blue-700 hover:to-cyan-700 transition-all transform hover:scale-105"
-          >
-            {t("home.nav.get_started")}
-          </button>
-        </div>
-        <div className="flex gap-3 items-center">
-          <LanguageSwitcher />
-          {token ? (
-            <Link
-              className="text-sm px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition"
-              to="/dashboard"
-            >
-              {userName || t("home.nav.dashboard")}
+    <div className="text-gray-900 bg-purple-200">
+      {/* NAV */}
+      <header className="fixed top-0 left-0 w-full z-50">
+        <div className="backdrop-blur-sm bg-purple-100/60 border-b border-gray-200">
+          <div className="max-w-7xl mx-auto px-6 py-3 flex items-center justify-between">
+            <Link to="/" className="flex items-center gap-3">
+              <div className="w-10 h-10 rounded-lg bg-gradient-to-r from-blue-600 to-cyan-500 flex items-center justify-center text-purple-100">
+                <Zap className="w-5 h-5" />
+              </div>
+              <span className="font-semibold text-lg">QuickShift</span>
             </Link>
-          ) : (
-            <Link className="text-sm px-4 py-2 bg-blue-600 text-white rounded hover:bg-blue-700 transition" to="/auth">{t("home.nav.login")}</Link>
+
+            <div className="hidden md:flex items-center gap-6">
+              <a href="#features" className="text-sm hover:text-blue-600">{t("home.nav.features")}</a>
+              <a href="#how" className="text-sm hover:text-blue-600">{t("home.nav.services")}</a>
+              <a href="#partners" className="text-sm hover:text-blue-600">{t("home.nav.about")}</a>
+              <LanguageSwitcher />
+              {token
+                ? <Link to="/dashboard" className="px-3 py-2 bg-blue-600 text-purple-100 rounded">{t("home.nav.dashboard")}</Link>
+                : <Link to="/auth" className="px-3 py-2 bg-blue-600 text-purple-100 rounded">{t("home.nav.get_started")}</Link>
+              }
+            </div>
+
+            <div className="md:hidden">
+              <button onClick={() => setMobileOpen(v => !v)} className="p-2">
+                {mobileOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              </button>
+            </div>
+          </div>
+
+          {/* mobile menu */}
+          {mobileOpen && (
+            <div className="md:hidden px-6 pb-4 bg-purple-100 border-t border-gray-100">
+              <a href="#features" className="block py-2">{t("home.nav.features")}</a>
+              <a href="#how" className="block py-2">{t("home.nav.how_works")}</a>
+              <a href="#partners" className="block py-2">{t("home.nav.partners")}</a>
+              <Link to="/auth" className="block mt-3 py-2 px-4 bg-blue-600 text-purple-100 rounded text-center">{t("home.nav.get_started")}</Link>
+            </div>
           )}
         </div>
-        <button 
-          className="md:hidden p-2"
-          onClick={() => setIsMenuOpen(!isMenuOpen)}
-        >
-          {isMenuOpen ? <X className="w-6 h-6 text-gray-100" /> : <Menu className="w-6 h-6 text-gray-100" />}
-        </button>
-      </nav>
+      </header>
 
-      {/* Mobile Menu */}
-      <div className={`md:hidden transition-all duration-300 ${isMenuOpen ? 'max-h-screen opacity-100' : 'max-h-0 opacity-0'} overflow-hidden bg-slate-900/95 backdrop-blur-md`}>
-        <div className="px-4 py-6 space-y-4">
-          <a href="#services" className="block hover:text-blue-400 transition-colors">{t("home.nav.services")}</a>
-          <a href="#features" className="block hover:text-blue-400 transition-colors">{t("home.nav.features")}</a>
-          <a href="#about" className="block hover:text-blue-400 transition-colors">{t("home.nav.about")}</a>
-          <button 
-            onClick={() => window.location.href = '/auth'}
-            className="w-full px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full hover:from-blue-700 hover:to-cyan-700 transition-all"
-          >
-            {t("home.nav.get_started")}
-          </button>
+      {/* HERO */}
+      <section className="relative pt-16">
+        <div className="relative">
+          <div className="h-screen max-h-[980px] md:h-[90vh] w-full overflow-hidden">
+            <img src={HERO} alt="hero" className="w-full h-full object-cover brightness-90" />
+            <div className="absolute inset-0 bg-gradient-to-r from-slate-900/50 via-transparent to-transparent"></div>
+
+            <div className="absolute inset-0 flex items-center">
+              <div className="max-w-6xl mx-auto px-6">
+                <div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+                  <div className="text-purple-100 z-10 mt-36">
+                    <h1 className="text-shadow-2xs bg-gradient-to-l from-yellow-100 to-green-200 bg-clip-text text-transparent text-4xl md:text-5xl font-extrabold leading-tight">{t('home.hero.title')}</h1>
+                    <p className="mt-6 text-lg md:text-xl max-w-xl">{t('home.hero.subtitle')}</p>
+
+                    <div className="mt-10 flex flex-col sm:flex-row gap-5">
+                      <Link to="/auth" className="inline-flex items-center gap-2 px-6 py-3 bg-gradient-to-r from-blue-500 to-cyan-500 rounded-full font-semibold shadow-lg">{t('home.get_started')} <ChevronRight className="w-4 h-4" /></Link>
+                    </div>
+
+                    <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-green-100">
+                      <div className="p-3 bg-violet-800/50 rounded">
+                        <div className="font-semibold">{t("home.hero.simple_bookings")}</div>
+                        <div className="text-sm">{t("home.hero.simple_bookings_desc")}</div>
+                      </div>
+                      <div className="p-3 bg-slate-800/50 rounded">
+                        <div className="font-semibold">{t("home.hero.verified_workers")}</div>
+                        <div className="text-sm">{t("home.hero.verified_workers_desc")}</div>
+                      </div>
+                      <div className="p-3 bg-green-800/50 rounded">
+                        <div className="font-semibold">{t("home.hero.secure_payments")}</div>
+                        <div className="text-sm">{t("home.hero.secure_payments_desc")}</div>
+                      </div>
+                    </div>
+                  </div>
+
+                  <div className="z-10">
+                    {/* decorative card stack to the right for visual interest */}
+                    <div className="space-y-6">
+                      <div className="bg-purple-100 rounded-2xl shadow-xl overflow-hidden">
+                        <img src={FEATURE_1} alt="feature" className="w-full h-64 object-cover" />
+                        <div className="p-5">
+                          <div className="font-semibold">{t("home.features.book_instantly")}</div>
+                          <div className="text-sm text-gray-600 mt-1">{t("home.features.book_instantly_desc")}</div>
+                        </div>
+                      </div>
+
+                      <div className="bg-purple-100 rounded-2xl shadow-lg p-5">
+                        <div className="font-semibold">{t("home.features.manage_teams")}</div>
+                        <div className="text-sm text-gray-600 mt-1">{t("home.features.manage_teams_desc")}</div>
+                        <div className="mt-4">
+                          <Link to="/for-businesses" className="text-blue-600">{t("home.features.learn_more_business")}</Link>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            {/* wave divider */}
+            <svg className="absolute bottom-0 left-0 w-full" viewBox="0 0 1440 120" fill="none" xmlns="http://www.w3.org/2000/svg">
+              <path d="M0 40C120 20 300 0 480 10C660 20 840 80 1020 80C1200 80 1320 40 1440 20V120H0V40Z" fill="#ffffff"></path>
+            </svg>
+          </div>
         </div>
-      </div>
+      </section>
 
-      <div className="px-4 md:px-8 lg:px-0 max-w- mx-auto">
-        {/* Hero Section */}
-        <section className="relative min-h-screen flex items-center justify-center px-4">
-          <div className="absolute inset-0 bg-gradient-to-r from-blue-900/10 to-cyan-900/10"></div>
-          <div className="absolute inset-0 overflow-hidden">
-            <div className="absolute -top-20 -right-20 w-40 h-40 sm:w-80 sm:h-80 bg-blue-700/30 rounded-full blur-3xl animate-pulse"></div>
-            <div className="absolute -bottom-20 -left-20 w-40 h-40 sm:w-80 sm:h-80 bg-cyan-700/30 rounded-full blur-3xl animate-pulse"></div>
+      {/* FEATURES */}
+      <section id="features" className="py-20 bg-purple-100">
+        <div className="max-w-7xl mx-auto px-6">
+          <div className="text-center mb-12">
+            <h2 className="text-3xl font-bold">{t("home.features.title")}</h2>
+            <p className="text-gray-600 mt-3 max-w-2xl mx-auto">{t("home.features.subtitle")}</p>
           </div>
-          <div className="relative max-w-7xl mx-auto text-center">
-            <div className="inline-flex items-center px-3 py-2 bg-blue-500/20 rounded-full mb-6  border border-blue-400/30">
-              <Star className="w-4 h-4 text-yellow-400 mr-2" />
-              <span className="text-sm">{t("home.stats.active_workers")}</span>
-            </div>
-            <h1 className="text-2xl md:text-4xl font-bold mb-6 leading-tight">
-              {t("home.hero.title")}
-              <span className="block bg-gradient-to-r from-blue-400 via-cyan-400 to-teal-400 bg-clip-text text-transparent">
-                {t("home.hero.subtitle")}
-              </span>
-            </h1>
-            <p className="text-lg md:text-xl text-gray-300 mb-8 max-w-4xl mx-auto">
-              {t("home.hero.subtitle")}
-            </p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center items-center mb-12">
-              <button 
-                onClick={() => window.location.href = '/auth'}
-                className="group w-full sm:w-auto px-6 py-3 bg-gradient-to-r from-blue-600 to-cyan-600 rounded-full font-semibold hover:from-blue-700 hover:to-cyan-700 transition-all transform hover:scale-105 flex items-center justify-center"
-              >
-                {t("home.cta.start_journey")}
-                <ArrowRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="w-full sm:w-auto px-6 py-3 border-2 border-blue-400 rounded-full font-semibold hover:bg-blue-400/10 transition-all flex items-center justify-center">
-                <Search className="w-5 h-5 mr-2" />
-                {t("home.explore_services")}
-              </button>
-            </div>
-            <div className="grid grid-cols-2 lg:grid-cols-4 gap-6 max-w-5xl mx-auto">
-              {stats.map((stat, index) => (
-                <div key={index} className="text-center p-4 bg-slate-900/60 rounded-xl border border-slate-800 hover:bg-slate-800 transition-all">
-                  <div className="text-2xl font-bold text-blue-400 mb-1">{stat.number}</div>
-                  <div className="text-sm text-gray-300">{stat.label}</div>
-                </div>
-              ))}
-            </div>
-          </div>
-        </section>
 
-        {/* Services Section */}
-        <section id="services" className="py-20 px-4 bg-slate-900">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">{t("home.services.title")}</h2>
-              <p className="text-lg text-gray-400 max-w-3xl mx-auto">
-                {t("home.services.home_repairs_desc")}
-              </p>
-            </div>
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-              {services.map((service, index) => {
-                const IconComponent = service.icon;
-                return (
-                  <div 
-                    key={index}
-                    className={`p-6 rounded-2xl cursor-pointer transition-all transform hover:scale-105 ${
-                      activeService === index 
-                        ? 'bg-gradient-to-br from-blue-700 to-cyan-700 shadow-2xl' 
-                        : 'bg-slate-800 hover:bg-slate-700'
-                    }`}
-                    onMouseEnter={() => setActiveService(index)}
-                  >
-                    <div className="w-12 h-12 bg-blue-500/20 rounded-lg flex items-center justify-center mb-4">
-                      <IconComponent className="w-6 h-6 text-blue-400" />
-                    </div>
-                    <h3 className="text-xl font-semibold mb-2">{service.title}</h3>
-                    <p className="text-gray-400">{service.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* Features Section */}
-        <section id="features" className="py-20 px-4 bg-slate-950">
-          <div className="max-w-7xl mx-auto">
-            <div className="text-center mb-16">
-              <h2 className="text-4xl font-bold mb-4">{t("home.features.title")}</h2>
-              <p className="text-lg text-gray-400 max-w-3xl mx-auto">{t("home.hero.subtitle")}</p>
-            </div>
-            <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
-              {features.map((feature, index) => {
-                const IconComponent = feature.icon;
-                return (
-                  <div 
-                    key={index}
-                    className="group p-8 bg-slate-900 rounded-2xl border border-slate-800 hover:border-blue-500/50 transition-all transform hover:-translate-y-2"
-                  >
-                    <div className="w-16 h-16 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-xl flex items-center justify-center mb-6 group-hover:scale-110 transition-transform">
-                      <IconComponent className="w-8 h-8 text-white" />
-                    </div>
-                    <h3 className="text-2xl font-semibold mb-4 group-hover:text-blue-400 transition-colors">{feature.title}</h3>
-                    <p className="text-gray-400">{feature.desc}</p>
-                  </div>
-                );
-              })}
-            </div>
-          </div>
-        </section>
-
-        {/* CTA Section */}
-        <section className="py-20 px-4 bg-gradient-to-r from-slate-900 to-slate-800">
-          <div className="max-w-5xl mx-auto text-center">
-            <h2 className="text-4xl font-bold mb-6">{t("home.cta.title")}</h2>
-            <p className="text-lg text-gray-300 mb-8 max-w-2xl mx-auto">{t("home.cta.subtitle")}</p>
-            <div className="flex flex-col sm:flex-row gap-4 justify-center">
-              <button 
-                onClick={() => window.location.href = '/auth'}
-                className="group w-full sm:w-auto px-10 py-4 bg-blue-600 text-white rounded-full font-bold hover:bg-blue-700 transition-all transform hover:scale-105 flex items-center justify-center"
-              >
-                {t("home.cta.start_journey")}
-                <ChevronRight className="w-5 h-5 ml-2 group-hover:translate-x-1 transition-transform" />
-              </button>
-              <button className="w-full sm:w-auto px-10 py-4 border-2 border-gray-300 text-gray-300 rounded-full font-bold hover:bg-gray-200 hover:text-slate-900 transition-all">
-                {t("home.cta.learn_more")}
-              </button>
-            </div>
-          </div>
-        </section>
-
-        {/* Footer */}
-        <footer className="py-12 px-4 bg-slate-950 border-t border-slate-800">
-          <div className="max-w-6xl mx-auto">
-            <div className="flex flex-col md:flex-row justify-between items-center">
-              <div className="flex items-center space-x-2 mb-6 md:mb-0">
-                <div className="w-10 h-10 bg-gradient-to-r from-blue-500 to-cyan-600 rounded-lg flex items-center justify-center">
-                  <Zap className="w-6 h-6 text-white" />
-                </div>
-                <span className="text-2xl font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
-                  QuickShift
-                </span>
-              </div>
-              <div className="flex space-x-6 text-gray-400">
-                <a href="#" className="hover:text-white transition-colors">{t("home.footer.privacy")}</a>
-                <a href="#" className="hover:text-white transition-colors">{t("home.footer.terms")}</a>
-                <a href="#" className="hover:text-white transition-colors">{t("home.footer.support")}</a>
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="bg-gradient-to-tr from-blue-50 to-cyan-50 p-8 rounded-2xl shadow-md">
+              <img src={FEATURE_1} alt="f1" className="w-full h-44 object-cover rounded-md mb-4" />
+              <h3 className="text-xl font-semibold">{t("home.features.on_demand_services")}</h3>
+              <p className="text-gray-600 mt-2">{t("home.features.on_demand_services_desc")}</p>
+              <div className="mt-4">
+                <Link to="/search" className="text-blue-600">{t("home.features.browse_services")}</Link>
               </div>
             </div>
-            <div className="mt-8 pt-8 border-t border-slate-800 text-center text-gray-500">
-              <p>{t("home.footer.copyright")}</p>
+
+            <div className="bg-gradient-to-tr from-purple-100 to-slate-50 p-8 rounded-2xl shadow-md">
+              <img src={FEATURE_2} alt="f2" className="w-full h-44 object-cover rounded-md mb-4" />
+              <h3 className="text-xl font-semibold">{t("home.features.workforce_solutions")}</h3>
+              <p className="text-gray-600 mt-2">{t("home.features.workforce_solutions_desc")}</p>
+              <div className="mt-4">
+                <Link to="/for-businesses" className="text-blue-600">{t("home.features.explore_business_plans")}</Link>
+              </div>
+            </div>
+
+            <div className="bg-gradient-to-tr from-purple-100 to-slate-50 p-8 rounded-2xl shadow-md">
+              <img src={FEATURE_3} alt="f3" className="w-full h-44 object-cover rounded-md mb-4" />
+              <h3 className="text-xl font-semibold">{t("home.features.skilling_certification")}</h3>
+              <p className="text-gray-600 mt-2">{t("home.features.skilling_certification_desc")}</p>
+              <div className="mt-4">
+                <Link to="/for-learners" className="text-blue-600">{t("home.features.view_courses")}</Link>
+              </div>
             </div>
           </div>
-        </footer>
-      </div>
+        </div>
+      </section>
+
+      {/* HOW IT WORKS */}
+      <section id="how" className="py-20 bg-gray-50">
+        <div className="max-w-5xl mx-auto px-6">
+          <div className="text-center mb-10">
+            <h2 className="text-3xl font-bold">{t("home.how_works.title")}</h2>
+            <p className="mt-3 text-gray-600">{t("home.how_works.subtitle")}</p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+            <div className="p-8 bg-purple-100 rounded-2xl shadow">
+              <div className="text-2xl font-bold">1</div>
+              <h4 className="mt-3 font-semibold">{t("home.how_works.choose_service")}</h4>
+              <p className="text-gray-600 mt-2">{t("home.how_works.choose_service_desc")}</p>
+            </div>
+
+            <div className="p-8 bg-purple-100 rounded-2xl shadow">
+              <div className="text-2xl font-bold">2</div>
+              <h4 className="mt-3 font-semibold">{t("home.how_works.schedule_confirm")}</h4>
+              <p className="text-gray-600 mt-2">{t("home.how_works.schedule_confirm_desc")}</p>
+            </div>
+
+            <div className="p-8 bg-purple-100 rounded-2xl shadow">
+              <div className="text-2xl font-bold">3</div>
+              <h4 className="mt-3 font-semibold">{t("home.how_works.pay_review")}</h4>
+              <p className="text-gray-600 mt-2">{t("home.how_works.pay_review_desc")}</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Partners */}
+      <section id="partners" className="py-20 bg-purple-100">
+        <div className="max-w-7xl mx-auto px-6 text-center">
+          <h2 className="text-2xl font-bold">{t("home.partners.title")}</h2>
+          <p className="text-gray-600 mt-3">{t("home.partners.subtitle")}</p>
+
+          <div className="mt-8 grid grid-cols-2 sm:grid-cols-4 gap-6 items-center">
+            <img src="https://via.placeholder.com/220x80?text=Partner+1" alt="p1" className="mx-auto" />
+            <img src="https://via.placeholder.com/220x80?text=Partner+2" alt="p2" className="mx-auto" />
+            <img src="https://via.placeholder.com/220x80?text=Partner+3" alt="p3" className="mx-auto" />
+            <img src="https://via.placeholder.com/220x80?text=Partner+4" alt="p4" className="mx-auto" />
+          </div>
+        </div>
+      </section>
+
+      {/* Footer */}
+      <footer className="bg-gray-800 text-gray-200 pt-12 pb-8">
+        <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
+          <div>
+            <div className="font-semibold text-purple-100 text-lg">QuickShift</div>
+            <p className="text-sm text-gray-300 mt-3">{t("home.footer.description")}</p>
+          </div>
+
+          <div>
+            <div className="font-semibold">{t("home.footer.contact")}</div>
+            <div className="text-sm text-gray-300 mt-2">{t("home.footer.address")}</div>
+            <div className="text-sm text-gray-300 mt-1">{t("home.footer.phone")}</div>
+            <div className="text-sm text-gray-300">{t("home.footer.email")}</div>
+          </div>
+
+          <div>
+            <div className="font-semibold">{t("home.footer.explore")}</div>
+            <ul className="mt-2 space-y-2 text-sm text-gray-300">
+              <li><a href="/for-businesses">{t("home.footer.for_businesses")}</a></li>
+              <li><a href="/for-workers">{t("home.footer.for_workers")}</a></li>
+              <li><a href="/for-learners">{t("home.footer.for_learners")}</a></li>
+              <li><a href="/careers">{t("home.footer.careers")}</a></li>
+            </ul>
+          </div>
+        </div>
+
+        <div className="text-center text-sm text-gray-400 mt-8">© {new Date().getFullYear()} QuickShift — {t("home.footer.copyright")}</div>
+      </footer>
     </div>
   );
 }
