@@ -27,7 +27,10 @@ export default function DashboardSidebar({ role, active, onSelect }) {
   };
 
   return (
-    <aside className="bg-gradient-to-b from-indigo-600 to-indigo-400 text-white w-60 min-h-screen rounded shadow-xl flex flex-col py-8 px-4">
+    <aside
+      className="fixed top-0 left-0 bg-gradient-to-b from-purple-600 to-indigo-400 text-white w-64 h-screen rounded-r shadow-xl flex flex-col py-8 px-4 z-30"
+      style={{ minHeight: "100vh" }}
+    >
       <div className="mb-8 text-center">
         <span className="text-3xl font-bold tracking-wide">QuickShift</span>
       </div>

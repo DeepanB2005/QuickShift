@@ -213,17 +213,17 @@ export default function ProfileSection({ user, onUserUpdate }) {
             </div>
 
             <div className="mt-6 grid grid-cols-3 gap-3">
-              <motion.div variants={statVariants} initial="hidden" animate="visible" className="p-3 rounded-lg bg-white border shadow-sm">
+              <motion.div variants={statVariants} initial="hidden" animate="visible" className="p-3 rounded-lg bg-violet-200 border shadow-sm">
                 <div className="text-xs text-gray-700">{t("profile.age")}</div>
                 <div className="text-lg font-medium">{user.age || "-"}</div>
               </motion.div>
 
-              <motion.div variants={statVariants} initial="hidden" animate="visible" className="p-3 rounded-lg bg-white border shadow-sm">
+              <motion.div variants={statVariants} initial="hidden" animate="visible" className="p-3 rounded-lg bg-violet-200 border shadow-sm">
                 <div className="text-xs text-gray-700">{t("profile.experience")}</div>
                 <div className="text-lg font-medium">{user.experience ? `${user.experience} ${t("common.years")}` : "-"}</div>
               </motion.div>
 
-              <motion.div variants={statVariants} initial="hidden" animate="visible" className="p-3 rounded-lg bg-white border shadow-sm">
+              <motion.div variants={statVariants} initial="hidden" animate="visible" className="p-3 rounded-lg bg-violet-200 border shadow-sm">
                 <div className="text-xs text-gray-700">{t("profile.wageRange")}</div>
                 <div className="text-lg font-medium">{user.wageMin && user.wageMax ? `${user.wageMin} - ${user.wageMax}` : "-"}</div>
               </motion.div>
