@@ -10,6 +10,8 @@ const JobSchema = new mongoose.Schema({
   wageMin: { type: Number, required: true },
   wageMax: { type: Number, required: true },
   requirements: [{ type: String }],
+  latitude: { type: Number, required: true },    // <-- Add this line
+  longitude: { type: Number, required: true },   // <-- Add this line
   createdAt: { type: Date, default: Date.now }
 });
 

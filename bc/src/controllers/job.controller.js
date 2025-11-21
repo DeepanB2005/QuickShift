@@ -1,18 +1,8 @@
 import Job from "../models/Job.js";
 
-export const createJob = async (req, res, next) => {
+export const createJob = async (req, res) => {
   try {
-    const {
-      jobName, description, location, duration, date,
-      wageMin, wageMax, requirements
-    } = req.body;
-
-    if (!jobName || !description || !location || !duration || !date || !wageMin || !wageMax) {
-      return res.status(400).json({ message: "All fields are required." });
-    }
-
-    const job = await Job.create({
-      user: req.user.id,
+    let {
       jobName,
       description,
       location,
@@ -20,12 +10,42 @@ export const createJob = async (req, res, next) => {
       date,
       wageMin,
       wageMax,
-      requirements
+      requirements,
+      latitude,
+      longitude
+    } = req.body;
+
+    // Convert to numbers if needed
+    latitude = Number(latitude);
+    longitude = Number(longitude);
+
+    // Validate coordinates
+    if (
+      typeof latitude !== "number" ||
+      typeof longitude !== "number" ||
+      isNaN(latitude) ||
+      isNaN(longitude)
+    ) {
+      return res.status(400).json({ message: "Latitude and longitude are required and must be numbers." });
+    }
+
+    const job = await Job.create({
+      user: req.user._id,
+      jobName,
+      description,
+      location,
+      duration,
+      date,
+      wageMin,
+      wageMax,
+      requirements,
+      latitude,
+      longitude
     });
 
-    res.status(201).json({ job, message: "Job posted successfully!" });
+    res.status(201).json({ job });
   } catch (err) {
-    next(err);
+    res.status(500).json({ message: err.message || "Failed to create job" });
   }
 };
 

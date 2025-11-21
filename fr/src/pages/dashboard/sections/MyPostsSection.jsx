@@ -100,12 +100,25 @@ export default function MyPostsSection() {
                 <>
                   <div className="font-bold text-lg text-indigo-700">{job.jobName}</div>
                   <div className="text-gray-700">{job.description}</div>
-                  <div className="text-sm text-gray-500">{job.location} | {job.duration} | {job.date ? job.date.slice(0, 10) : ""}</div>
-                  <div className="text-sm text-gray-500">{t("addPost.wageMin") || "Wage Min"}: {job.wageMin} | {t("addPost.wageMax") || "Wage Max"}: {job.wageMax}</div>
-                  <div className="text-sm text-gray-500">{t("addPost.requirements") || "Requirements"}: {(job.requirements || []).join(", ")}</div>
+                  <div className="text-sm text-gray-500">
+                    {job.location} | {job.duration} | {job.date ? job.date.slice(0, 10) : ""}
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    {t("addPost.wageMin") || "Wage Min"}: {job.wageMin} | {t("addPost.wageMax") || "Wage Max"}: {job.wageMax}
+                  </div>
+                  <div className="text-sm text-gray-500">
+                    {t("addPost.requirements") || "Requirements"}: {(job.requirements || []).join(", ")}
+                  </div>
+                  <div className="text-sm text-blue-700">
+                    {t("addPost.coords") || "Coordinates"}: {job.latitude}, {job.longitude}
+                  </div>
                   <div className="flex gap-2 mt-2">
-                    <button className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600" onClick={() => handleEdit(job)}>{t("myPosts.edit") || "Edit"}</button>
-                    <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" onClick={() => handleDelete(job._id)}>{t("myPosts.delete") || "Delete"}</button>
+                    <button className="px-3 py-1 bg-yellow-500 text-white rounded hover:bg-yellow-600" onClick={() => handleEdit(job)}>
+                      {t("myPosts.edit") || "Edit"}
+                    </button>
+                    <button className="px-3 py-1 bg-red-500 text-white rounded hover:bg-red-600" onClick={() => handleDelete(job._id)}>
+                      {t("myPosts.delete") || "Delete"}
+                    </button>
                   </div>
                 </>
               )}

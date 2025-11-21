@@ -27,13 +27,39 @@ export default function AddPostSection() {
     date: "",
     wageMin: "",
     wageMax: "",
-    requirements: ""
+    requirements: "",
+    latitude: "",
+    longitude: ""
   });
   const [loading, setLoading] = useState(false);
   const [msg, setMsg] = useState("");
+  const [locating, setLocating] = useState(false);
 
   const handleChange = (e) => {
     setForm({ ...form, [e.target.name]: e.target.value });
+  };
+
+  const handleGetLocation = () => {
+    setLocating(true);
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(
+        (pos) => {
+          setForm((prev) => ({
+            ...prev,
+            latitude: pos.coords.latitude,
+            longitude: pos.coords.longitude
+          }));
+          setLocating(false);
+        },
+        () => {
+          setMsg(t("addPost.locationError") || "Could not get your location.");
+          setLocating(false);
+        }
+      );
+    } else {
+      setMsg(t("addPost.locationError") || "Geolocation is not supported.");
+      setLocating(false);
+    }
   };
 
   const handleSubmit = async (e) => {
@@ -65,6 +91,8 @@ export default function AddPostSection() {
         wageMin: "",
         wageMax: "",
         requirements: "",
+        latitude: "",
+        longitude: ""
       });
     } catch (err) {
       setMsg(err?.response?.data?.message || t("common.error"));
@@ -128,6 +156,23 @@ export default function AddPostSection() {
             placeholder="e.g. Chennai, Tamil Nadu"
             required
           />
+          <div className="flex items-center gap-3 mt-2">
+            <button
+              type="button"
+              className="px-3 py-1 bg-blue-500 text-white rounded hover:bg-blue-600"
+              onClick={handleGetLocation}
+              disabled={locating}
+            >
+              {locating
+                ? t("addPost.locating") || "Getting location..."
+                : t("addPost.getLocation") || "Use My Location"}
+            </button>
+            {(form.latitude && form.longitude) && (
+              <span className="text-xs text-green-700">
+                {t("addPost.coords") || "Coordinates"}: {form.latitude}, {form.longitude}
+              </span>
+            )}
+          </div>
         </div>
 
         {/* Duration & Date */}

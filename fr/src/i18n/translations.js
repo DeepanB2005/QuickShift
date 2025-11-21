@@ -2,6 +2,7 @@ export const translations = {
   en: {
     common: {
       loading: "Loading...",
+      submitting:"submitted",
       error: "Something went wrong",
       success: "Success!",
       save: "Save",
@@ -315,7 +316,8 @@ export const translations = {
     },
     jobPosts:
     {
-      title: "JOB POSTS"
+      title: "JOB POSTS",
+      subtitle:"Find your job matched"
     },
 
     profile: {
@@ -373,18 +375,32 @@ export const translations = {
       accepted: "Accepted",
       rejected: "Rejected",
       accept: "Accept",
-      reject: "Reject"
+      reject: "Reject",
+      Rating:"Submit rating",
+      rateWorker:"Rate worker",
+      workerOverallRating: "Worker Overall Rating",
     },
     myBookings: {
       title: "My Bookings",
       noBookings: "No bookings yet.",
       requestMessage: "Your Message",
-      status: "Status"
+      status: "Status",
+      cancel:"cancel",
+      subtitle:"find your bookings",
+      message:"Message",
+      count:"count"
     },
     requests: {
       title: "My Requests",
       noRequests: "No requests sent yet.",
-      status: "Status"
+      status: "Status",
+      noMessage:"No Message",
+      count:"count",
+      subtitle:"find your requests",
+      withdraw:"withdraw",
+      rating:"submit rating",
+            rateWorker:"Rate worker",
+
     },
     auth: {
       homeBtn: "Home",

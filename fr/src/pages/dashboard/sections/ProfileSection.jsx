@@ -173,8 +173,8 @@ export default function ProfileSection({ user, onUserUpdate }) {
   };
 
   return (
-    <div className="max-w-4xl  mx-auto">
-      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-gradient-to-bl from-red-200 via-indigo-200 to-red-200 p-6 rounded-2xl shadow-xl border border-indigo-100">
+    <div className="max-w-4xl  mx-auto mr-40">
+      <motion.div initial={{ opacity: 0, y: 10 }} animate={{ opacity: 1, y: 0 }} className="bg-gradient-to-bl from-purple-200 via-indigo-200 to-purple-200 p-6 rounded-2xl shadow-xl border border-indigo-100">
         <div className="flex items-start gap-6">
           <div className="relative">
             <div className="w-28 h-28 rounded-full overflow-hidden ring-4 ring-violet-400 shadow-md bg-gray-100">
@@ -186,7 +186,7 @@ export default function ProfileSection({ user, onUserUpdate }) {
             </div>
             <button
               onClick={() => fileRef.current?.click()}
-              className="absolute -bottom-1 -right-1 bg-red-300 p-1 rounded-full shadow border hover:scale-105 transition-transform"
+              className="absolute -bottom-1 -right-1 bg-purple-300 p-1 rounded-full shadow border hover:scale-105 transition-transform"
               aria-label="Upload avatar"
             >
               <Edit2 size={16} />

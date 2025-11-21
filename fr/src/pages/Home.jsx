@@ -139,20 +139,7 @@ export default function Home() {
                       </Link>
                     </div>
 
-                    <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-green-100">
-                      <div className="p-3 bg-violet-800/50 rounded">
-                        <div className="font-semibold">{t('home.hero.easy_posting')}</div>
-                        <div className="text-sm">{t('home.hero.easy_posting_desc')}</div>
-                      </div>
-                      <div className="p-3 bg-slate-800/50 rounded">
-                        <div className="font-semibold">{t('home.hero.nearby_discovery')}</div>
-                        <div className="text-sm">{t('home.hero.nearby_discovery_desc')}</div>
-                      </div>
-                      <div className="p-3 bg-green-800/50 rounded">
-                        <div className="font-semibold">{t('home.hero.chatbot_help')}</div>
-                        <div className="text-sm">{t('home.hero.chatbot_help_desc')}</div>
-                      </div>
-                    </div>
+                   
                   </div>
 
                   <div>
@@ -252,9 +239,23 @@ export default function Home() {
 
       {/* HOW IT WORKS */}
       <HowItWorksSection t={t}/>
+       <div className="mt-10 grid grid-cols-1 sm:grid-cols-3 gap-3 text-green-100">
+                      <div className="p-3 bg-violet-800/50 rounded w-40 ml-40">
+                        <div className="font-semibold">{t('home.hero.easy_posting')}</div>
+                        <div className="text-sm">{t('home.hero.easy_posting_desc')}</div>
+                      </div>
+                      <div className="p-3 bg-slate-800/50 rounded w-40 ml-40">
+                        <div className="font-semibold">{t('home.hero.nearby_discovery')}</div>
+                        <div className="text-sm">{t('home.hero.nearby_discovery_desc')}</div>
+                      </div>
+                      <div className="p-3 bg-green-800/50 rounded w-40 ml-40">
+                        <div className="font-semibold">{t('home.hero.chatbot_help')}</div>
+                        <div className="text-sm">{t('home.hero.chatbot_help_desc')}</div>
+                      </div>
+                    </div>
 
       {/* Footer */}
-      <footer className="bg-gray-800 text-gray-200 pt-12 pb-8">
+      <footer className="bg-gray-800 text-gray-200 pt-12 pb-8 mt-10">
         <div className="max-w-7xl mx-auto px-6 grid grid-cols-1 md:grid-cols-3 gap-8">
           <div>
             <div className="font-semibold text-purple-100 text-lg">QuickShift</div>
