@@ -68,19 +68,18 @@ export default function AddPostSection() {
     setMsg("");
     try {
       const token = localStorage.getItem("token");
-      await axios.post(
-        `${API}/api/jobs`,
-        {
-          ...form,
-          wageMin: form.wageMin ? Number(form.wageMin) : undefined,
-          wageMax: form.wageMax ? Number(form.wageMax) : undefined,
-          requirements: form.requirements
-            .split(",")
-            .map((r) => r.trim())
-            .filter(Boolean),
-        },
-        { headers: { Authorization: `Bearer ${token}` } }
-      );
+      const payload = {
+        ...form,
+        wageMin: form.wageMin ? Number(form.wageMin) : undefined,
+        wageMax: form.wageMax ? Number(form.wageMax) : undefined,
+        requirements: form.requirements
+          .split(",")
+          .map((r) => r.trim())
+          .filter(Boolean),
+      };
+      await axios.post(`${API}/api/jobs`, payload, {
+        headers: { Authorization: `Bearer ${token}` }
+      });
       setMsg(t("addPost.success") || "✅ Job posted successfully!");
       setForm({
         jobName: "",

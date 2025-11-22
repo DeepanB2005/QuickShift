@@ -1,4 +1,6 @@
 import Job from "../models/Job.js";
+import jwt from "jsonwebtoken";
+import User from "../models/User.js";
 
 // CREATE JOB
 export const createJob = async (req, res, next) => {
@@ -63,4 +65,18 @@ export const deleteJob = async (req, res, next) => {
   }
 };
 
-// You can add getMyJobs, updateJob, getAllJobs similarly if not already present.
+// GET ALL JOBS
+export const getAllJobs = async (req, res, next) => {
+  try {
+    const jobs = await Job.find().populate("user", "name email");
+    res.json(jobs);
+  } catch (err) {
+    next(err);
+  }
+};
+
+// You can add getMyJobs, updateJob similarly if not already present
+
+const decoded = jwt.verify(token, process.env.JWT_SECRET);
+const userId = decoded.id || decoded._id; // support both
+const user = await User.findById(userId);
