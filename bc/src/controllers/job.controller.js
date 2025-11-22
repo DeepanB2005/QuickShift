@@ -1,11 +1,8 @@
 import Job from "../models/Job.js";
-import jwt from "jsonwebtoken";
-import User from "../models/User.js";
 
-// CREATE JOB
-export const createJob = async (req, res, next) => {
+export const createJob = async (req, res) => {
   try {
-    const {
+    let {
       jobName,
       description,
       location,
@@ -18,18 +15,18 @@ export const createJob = async (req, res, next) => {
       longitude
     } = req.body;
 
+    // Convert to numbers if needed
+    latitude = Number(latitude);
+    longitude = Number(longitude);
+
+    // Validate coordinates
     if (
-      !jobName ||
-      !description ||
-      !location ||
-      !duration ||
-      !date ||
-      !wageMin ||
-      !wageMax ||
-      latitude === undefined ||
-      longitude === undefined
+      typeof latitude !== "number" ||
+      typeof longitude !== "number" ||
+      isNaN(latitude) ||
+      isNaN(longitude)
     ) {
-      return res.status(400).json({ message: "All fields are required." });
+      return res.status(400).json({ message: "Latitude and longitude are required and must be numbers." });
     }
 
     const job = await Job.create({
@@ -46,37 +43,50 @@ export const createJob = async (req, res, next) => {
       longitude
     });
 
-    res.status(201).json({ job, message: "Job posted successfully!" });
+    res.status(201).json({ job });
   } catch (err) {
-    next(err);
+    res.status(500).json({ message: err.message || "Failed to create job" });
   }
 };
 
-// DELETE JOB
-export const deleteJob = async (req, res, next) => {
+export const getMyJobs = async (req, res, next) => {
   try {
-    const job = await Job.findOneAndDelete({ _id: req.params.id, user: req.user._id });
-    if (!job) {
-      return res.status(404).json({ message: "Job not found or unauthorized" });
-    }
-    res.json({ message: "Job deleted successfully" });
+    const jobs = await Job.find({ user: req.user.id }).sort({ createdAt: -1 });
+    res.json({ jobs });
   } catch (err) {
     next(err);
   }
 };
 
-// GET ALL JOBS
 export const getAllJobs = async (req, res, next) => {
   try {
-    const jobs = await Job.find().populate("user", "name email");
-    res.json(jobs);
+    const jobs = await Job.find().sort({ createdAt: -1 });
+    res.json({ jobs });
   } catch (err) {
     next(err);
   }
 };
 
-// You can add getMyJobs, updateJob similarly if not already present
+export const updateJob = async (req, res, next) => {
+  try {
+    const job = await Job.findOneAndUpdate(
+      { _id: req.params.id, user: req.user.id },
+      req.body,
+      { new: true }
+    );
+    if (!job) return res.status(404).json({ message: "Job not found." });
+    res.json({ job, message: "Job updated." });
+  } catch (err) {
+    next(err);
+  }
+};
 
-const decoded = jwt.verify(token, process.env.JWT_SECRET);
-const userId = decoded.id || decoded._id; // support both
-const user = await User.findById(userId);
+export const deleteJob = async (req, res, next) => {
+  try {
+    const job = await Job.findOneAndDelete({ _id: req.params.id, user: req.user.id });
+    if (!job) return res.status(404).json({ message: "Job not found." });
+    res.json({ message: "Job deleted." });
+  } catch (err) {
+    next(err);
+  }
+};
