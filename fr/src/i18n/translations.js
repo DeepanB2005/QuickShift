@@ -342,7 +342,7 @@ export const translations = {
       title: "Post a Job",
       jobName: "Job Name",
       description: "Description",
-      location: "Location",
+      getLocation: "Get Location",
       duration: "Duration",
       date: "Date",
       wageMin: "Wage Min",
