@@ -78,7 +78,7 @@ export const translations = {
         easy_posting_desc: "General users can post wanted ads ",
         nearby_discovery: "Nearby Worker Discovery",
         nearby_discovery_desc: "Workers see jobs near them and apply",
-        chatbot_help: "Chatbot Assistance",
+        chatbot_help: "work finder Assistance",
         chatbot_help_desc: "Get help and navigation ",
         instant_apply: "Instant Applications",
         instant_apply_desc: "Workers can apply to your job posts instantly and you can review applicants.",
@@ -88,8 +88,8 @@ export const translations = {
         map_navigation_desc: "See job locations, calculate distance, and get the best route using interactive maps.",
         secure_communication: "Secure Communication",
         secure_communication_desc: "Chat safely with workers and users directly within the platform.",
-        support_chatbot: "24/7 Support Chatbot",
-        support_chatbot_desc: "Get instant help and guidance anytime with our integrated chatbot.",
+        support_chatbot: "support work finder 24/7",
+        support_chatbot_desc: "Get instant help and guidance anytime with our integrated navigation.",
       },
       get_started: "Get Started",
       go_to_dashboard: "Go to Dashboard",
@@ -102,8 +102,8 @@ export const translations = {
         apply_jobs: "Apply for Jobs",
         apply_jobs_desc: "Workers see nearby posts, view distance and route, and apply for jobs that match their skills.",
         for_workers: "For Workers",
-        chatbot_nav: "Chatbot & Navigation",
-        chatbot_nav_desc: "Use the chatbot for help and get navigation to job locations using interactive maps.",
+        chatbot_nav: "Navigation",
+        chatbot_nav_desc: "Use the filters for help and get navigation to job locations using interactive maps.",
         learn_more: "Learn More"
       },
       how_works: {
@@ -113,8 +113,8 @@ export const translations = {
         step1_desc: "Describe your need (e.g., plumber needed), add location and details.",
         step2: "Workers Apply",
         step2_desc: "Nearby workers see your post, check distance and route, and apply.",
-        step3: "Connect & Chat",
-        step3_desc: "Use the dashboard and chatbot to manage and communicate with applicants."
+        step3: "Connect & navigate",
+        step3_desc: "Use the dashboard  to manage and communicate with applicants."
       },
      
       footer: {

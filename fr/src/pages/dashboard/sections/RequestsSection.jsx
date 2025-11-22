@@ -88,7 +88,7 @@ export default function RequestsSection({ showActions = true }) {
           </div>
         </div>
 
-        <div className="p-6 bg-white">
+        <div className="p-6 bg-white">  
           {requests.length === 0 ? (
             <div className="text-center py-12 text-gray-600">
               <p className="text-lg font-medium">{t("requests.noRequests") || 'No requests sent yet.'}</p>
