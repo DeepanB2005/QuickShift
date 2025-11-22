@@ -115,16 +115,7 @@ export default function RequestsSection({ showActions = true }) {
                     </div>
                   </div>
 
-                  <div className="flex flex-col items-end gap-2">
-                    {showActions && (
-                      <>
-                        <button onClick={() => window.location.href = `/job/${req.job?._id || ''}`} className="px-3 py-2 rounded-lg bg-white border text-purple-700 hover:bg-purple-50">View</button>
-                        <button disabled={processing === req._id} onClick={() => withdraw(req._id)} className="px-3 py-2 rounded-lg bg-red-50 text-red-700 border border-red-100 hover:bg-red-100">
-                          {processing === req._id ? (t('requests.withdrawing') || 'Withdrawing...') : (t('requests.withdraw') || 'Withdraw')}
-                        </button>
-                      </>
-                    )}
-                  </div>
+                  
                 </motion.div>
               ))}
             </div>
